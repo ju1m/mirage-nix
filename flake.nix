@@ -53,7 +53,12 @@
           system:
           f rec {
             inherit system;
-            pkgs = inputs.nixpkgs.legacyPackages.${system};
+            pkgs = import inputs.nixpkgs {
+              inherit system;
+              overlays = [
+                inputs.self.overlays.default
+              ];
+            };
             treefmt = inputs.treefmt-nix.lib.evalModule pkgs {
               projectRootFile = "flake.nix";
             };
@@ -62,9 +67,17 @@
     in
     {
       packages = foreachSystem (
-        { ... }: {
+        { pkgs, ... }: {
+          dnsvizor = pkgs.callPackage pkgs/by-name/dnsvizor/package.nix { };
         }
       );
+      overlays.default = finalPkgs: previousPkgs: {
+        mirage = finalPkgs.callPackage lib/mirage.nix { };
+        opam-nix = inputs.opam-nix.lib.${finalPkgs.stdenv.hostPlatform.system};
+      };
+      nixosModules = {
+        dnsvizor = projects/DNSvizor/services/dnsvizor/module.nix;
+      };
       devShells = foreachSystem (
         {
           pkgs,

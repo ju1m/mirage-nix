@@ -1,7 +1,5 @@
 # Description: this file implements build helpers
 # for MirageOS unikernels <https://mirageos.org>.
-# Though currently located in ngipkgs/pkgs/by-name/dnsvizor/mirage.nix
-# it is not specific to NGIpkgs, DNSvizor nor any `src` updater.
 {
   coreutils,
   jq,
