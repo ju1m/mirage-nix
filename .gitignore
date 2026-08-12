@@ -1,0 +1,4 @@
+/.direnv/
+/.jj/
+/.pre-commit-config.yaml
+/result*
