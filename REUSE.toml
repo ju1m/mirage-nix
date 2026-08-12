@@ -1,0 +1,10 @@
+version = 1
+SPDX-PackageName = "mirage-nix"
+SPDX-PackageSupplier = "Nix@NGI <ngi@nixos.org>"
+SPDX-PackageDownloadLocation = "https://github.com/ngi-nix/mirage-nix"
+
+[[annotations]]
+path = ["**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Nix@NGI <ngi@nixos.org>"
+SPDX-License-Identifier = "MIT"
