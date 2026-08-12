@@ -3,15 +3,12 @@
   fetchFromGitHub,
   pkgsStatic,
   stdenv,
-  callPackage,
   overrideCC,
   unstableGitUpdater,
   _experimental-update-script-combinators,
+  mirage,
 }:
-let
-  libMirage = callPackage ./mirage.nix { };
-in
-(libMirage.builds (finalAttrs: {
+(mirage.builds (finalAttrs: {
   pname = "dnsvizor";
   version = "0-unstable-2026-01-21";
   materializedDir = ./materialized;
@@ -86,7 +83,7 @@ in
       "virtio"
       "xen"
     ]
-  ) libMirage.possibleTargets;
+  ) mirage.possibleTargets;
 })).extend
   (
     finalSet: previousSet: {
