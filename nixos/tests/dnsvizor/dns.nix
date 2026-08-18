@@ -15,16 +15,12 @@
 # resolver.
 
 # IPv6 is preferred/tested when dnsvizor enables both IPv4 and IPv6.
-
 {
-  lib,
-  sources,
-  exampleName,
   resolverKind,
   useNetworkd,
   useNftables,
-  ...
-}:
+  modules,
+}@testArgs:
 
 assert builtins.elem resolverKind [
   "stub"
@@ -33,11 +29,17 @@ assert builtins.elem resolverKind [
 assert builtins.isBool useNetworkd;
 assert builtins.isBool useNftables;
 
+{
+  lib,
+  ...
+}:
+
 let
   # explicitly set vlan in two ways of network config (virtualisation.interfaces and virtualisation.vlans) to make sure all nodes are in the same vlan
   vlan = 1;
 
   commonDnsServerModule = {
+    services.dnsvizor.packetForwardingIsSecure = true;
     services.knot = {
       enable = true;
       settings = {
@@ -72,11 +74,7 @@ let
       cfg = config.services.dnsvizor;
     in
     {
-      imports = [
-        sources.modules.ngipkgs
-        sources.modules.services.dnsvizor
-      ];
-
+      services.dnsvizor.packetForwardingIsSecure = true;
       virtualisation.interfaces.${cfg.mainInterface} = {
         inherit vlan;
         assignIP = true;
@@ -203,7 +201,7 @@ in
         interface = "enp3s0";
       in
       {
-        imports = [ commonDnsServerModule ];
+        imports = [ commonDnsServerModule ] ++ testArgs.modules;
 
         virtualisation.interfaces.${interface} = {
           inherit vlan;
@@ -236,7 +234,7 @@ in
     tldDnsServer =
       { pkgs, nodes, ... }:
       {
-        imports = [ commonDnsServerModule ];
+        imports = [ commonDnsServerModule ] ++ testArgs.modules;
 
         virtualisation.vlans = [ vlan ];
 
@@ -254,7 +252,7 @@ in
     authoritativeDnsServer =
       { pkgs, nodes, ... }:
       {
-        imports = [ commonDnsServerModule ];
+        imports = [ commonDnsServerModule ] ++ testArgs.modules;
 
         virtualisation.vlans = [ vlan ];
 
@@ -287,8 +285,8 @@ in
       {
         imports = [
           commonDnsResolverModule
-          sources.examples.DNSvizor.${exampleName}
-        ];
+        ]
+        ++ testArgs.modules;
 
         # emulate root dns resolver
         networking.interfaces.${cfg.mainInterface} = lib.mkIf (resolverKind == "recursive") {
@@ -325,6 +323,10 @@ in
         dnsResolverCfg = dnsResolver.services.dnsvizor;
       in
       {
+        imports = testArgs.modules;
+
+        services.dnsvizor.packetForwardingIsSecure = true;
+
         virtualisation.vlans = [ vlan ];
 
         environment.systemPackages = [ pkgs.q ]; # DNS query tool used in testScript

@@ -1,0 +1,3 @@
+{
+  interactive.sshBackdoor.enable = true;
+}

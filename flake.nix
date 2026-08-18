@@ -39,20 +39,13 @@
   outputs =
     inputs:
     let
-      lib = inputs.nixpkgs.lib;
-      fileInputs =
-        with lib.fileset;
-        toSource {
-          root = ./.;
-          fileset = unions [
-          ];
-        };
+      inherit (inputs.nixpkgs) lib;
       foreachSystem =
-        f:
+        mk:
         lib.genAttrs lib.systems.flakeExposed (
           system:
-          f rec {
-            inherit system;
+          mk rec {
+            inherit lib system inputs;
             pkgs = import inputs.nixpkgs {
               inherit system;
               overlays = [
@@ -70,9 +63,18 @@
     in
     {
       packages = foreachSystem (
-        { pkgs, ... }: {
-          dnsvizor = pkgs.callPackage pkgs/by-name/dnsvizor/package.nix { };
+        { pkgs, ... }:
+        # Explanation(compatibility): `flake.nix` does not allow nested `packages`
+        # hence add a single `dnsvizor` package containing them,
+        # and `dnsvizor.${target}` aliases for `nix flake show`.
+        let
+          dnsvizorPkgs = pkgs.callPackage pkgs/by-name/dnsvizor/package.nix { };
+          targets = dnsvizorPkgs.update.targets ++ [ "update" ];
+        in
+        {
+          dnsvizor = pkgs.writeText "dnsvizor" "" // lib.genAttrs targets (target: dnsvizorPkgs.${target});
         }
+        // lib.genAttrs' targets (target: lib.nameValuePair "dnsvizor.${target}" dnsvizorPkgs.${target})
       );
       overlays.default = final: previous: {
         mirage = final.callPackage lib/mirage.nix { };
@@ -82,33 +84,21 @@
           ;
       };
       nixosModules = {
-        dnsvizor = projects/DNSvizor/services/dnsvizor/module.nix;
+        dnsvizor = nixos/modules/services/dnsvizor.nix;
       };
       devShells = foreachSystem (
-        {
-          pkgs,
-          system,
-          ...
-        }:
+        { pkgs, system, ... }:
         {
           default = pkgs.mkShell {
-            inherit (inputs.self.checks.${system}.git-hooks-check) shellHook;
+            inherit (inputs.self.checks.${system}.git-hooks) shellHook;
           };
         }
       );
       checks = foreachSystem (
-        { system, pkgs, ... }: {
-          git-hooks-check = inputs.git-hooks.lib.${system}.run {
-            src = ./.;
-            package = pkgs.prek;
-            default_stages = [
-              "manual"
-              "pre-push"
-            ];
-            hooks = {
-              nixfmt.enable = true;
-            };
-          };
+        { system, pkgs, ... }@args:
+        lib.concatMapAttrs (_name: file: import file args) {
+          git-hooks = flake/checks/git-hooks.nix;
+          dnsvizor = flake/checks/dnsvizor.nix;
         }
       );
       formatter = foreachSystem ({ treefmt, ... }: treefmt.config.build.wrapper);

@@ -239,7 +239,7 @@ rec {
                     # Let `update-source-version` find where to update `version` and `hash`.
                     pos = builtins.unsafeGetAttrPos "src" finalArgs;
                     passthru = {
-                      inherit (finalArgs) src materializedDir;
+                      inherit (finalArgs) src materializedDir targets;
                       materializeTargets = lib.getExe (writeShellApplication {
                         name = "${finalArgs.pname}-materializeTargets";
                         text = ''
