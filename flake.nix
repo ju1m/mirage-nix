@@ -71,12 +71,15 @@
           dnsvizor = pkgs.callPackage pkgs/by-name/dnsvizor/package.nix { };
         }
       );
-      overlays.default = finalPkgs: previousPkgs: {
-        mirage = finalPkgs.callPackage lib/mirage.nix { };
-        opam-nix = inputs.opam-nix.lib.${finalPkgs.stdenv.hostPlatform.system};
-      };
+      overlays.default =
+        finalPkgs: previousPkgs:
+        {
+          mirage = finalPkgs.callPackage lib/mirage.nix { };
+          opam-nix = inputs.opam-nix.lib.${finalPkgs.stdenv.hostPlatform.system};
+        }
+        // inputs.self.packages.${previousPkgs.stdenv.hostPlatform.system};
       nixosModules = {
-        dnsvizor = projects/DNSvizor/services/dnsvizor/module.nix;
+        dnsvizor = nixos/modules/services/dnsvizor.nix;
       };
       devShells = foreachSystem (
         {
@@ -91,7 +94,8 @@
         }
       );
       checks = foreachSystem (
-        { system, pkgs, ... }: {
+        { system, pkgs, ... }:
+        {
           git-hooks-check = inputs.git-hooks.lib.${system}.run {
             src = ./.;
             package = pkgs.prek;
@@ -104,6 +108,83 @@
             };
           };
         }
+        // (
+          let
+            mkNixOSTest =
+              args:
+              lib.nameValuePair args.testName (
+                let
+                  testArgToString =
+                    name: param: sep:
+                    if param == true then
+                      "-" + name
+                    else if param == false then
+                      ""
+                    else if lib.isString param then
+                      "-" + param
+                    else
+                      throw "testArgToString: not implemented for ${name}=${toString param}";
+                  testArgsToString =
+                    testArgs:
+                    lib.pipe testArgs [
+                      (lib.mapAttrs (name: param: testArgToString name param "-"))
+                      lib.attrValues
+                      lib.concatStrings
+                    ];
+                  mkTest =
+                    testArgs:
+                    lib.nameValuePair "dnsvizor-${args.testName}${testArgsToString testArgs}" (
+                      pkgs.testers.runNixOSTest (
+                        lib.modules.importApply nixos/tests/dnsvizor/dns.nix (
+                          testArgs
+                          // {
+                            modules = [
+                              args.module
+                              inputs.self.nixosModules.dnsvizor
+                            ];
+                          }
+                        )
+                      )
+                    );
+                in
+                lib.listToAttrs (lib.map mkTest (lib.cartesianProduct args.settings))
+              );
+          in
+          lib.listToAttrs (
+            map mkNixOSTest [
+              {
+                testName = "dns-ipv4";
+                settings = {
+                  resolverKind = [ "stub" ];
+                  useNetworkd = [
+                    true
+                    false
+                  ];
+                  useNftables = [
+                    true
+                    false
+                  ];
+                };
+                module = nixos/tests/dnsvizor/stub-dns-resolver.nix;
+              }
+              {
+                testName = "dns-dualstack";
+                settings = {
+                  resolverKind = [ "recursive" ];
+                  useNetworkd = [
+                    true
+                    false
+                  ];
+                  useNftables = [
+                    true
+                    false
+                  ];
+                };
+                module = nixos/tests/dnsvizor/recursive-dns-resolver.nix;
+              }
+            ]
+          )
+        )
       );
       formatter = foreachSystem ({ treefmt, ... }: treefmt.config.build.wrapper);
     };

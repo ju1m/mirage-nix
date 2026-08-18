@@ -21,63 +21,26 @@ let
   };
 in
 {
-  metadata = {
-    summary = "Privacy-enhanced, secure and robust DNS resolver and DHCP server with a small resource footprint as a MirageOS unikernel";
-    subgrants = {
-      Entrust = [ "DNSvizor" ];
-    };
-    links = {
-      homepage = null;
-      repo = {
-        text = "Source repository";
-        url = "https://github.com/robur-coop/dnsvizor";
-      };
-      docs = {
-        text = "Handbook";
-        url = "https://robur-coop.github.io/dnsvizor-handbook/";
-      };
-      blog = {
-        text = "Blog";
-        url = "https://blog.robur.coop/tags.html#tag-DNSvizor";
-      };
-      upstreamBuilds = {
-        text = "Reproducible unikernel binaries built by upstream";
-        url = "https://builds.robur.coop/job/dnsvizor";
-      };
-      mirageOS = {
-        text = "MirageOS";
-        url = "https://mirage.io/";
-      };
-    };
-  };
-
   nixos.modules.services.dnsvizor = {
     name = "DNSvizor";
     module = ./services/dnsvizor/module.nix;
     examples =
       let
         mkExample =
-          {
-            exampleName,
-            exampleModule,
-            exampleDescription,
-            testName,
-            testModule,
-            testCfg,
-          }:
-          lib.nameValuePair exampleName {
-            module = exampleModule;
-            description = exampleDescription;
+          args:
+          lib.nameValuePair args.exampleName {
+            module = args.exampleModule;
+            description = args.exampleDescription;
             tests =
               let
                 testArgToString =
-                  testArgName: testArgValue: seperator:
+                  testArgName: testArgValue: sep:
                   if testArgValue == true then
-                    seperator + testArgName
+                    sep + testArgName
                   else if testArgValue == false then
                     ""
                   else if lib.isString testArgValue then
-                    seperator + testArgValue
+                    sep + testArgValue
                   else
                     throw "testArgToString: not implemented for ${testArgName}=${toString testArgValue}";
                 testArgsToString =
@@ -89,12 +52,12 @@ in
                   ];
                 mkTest =
                   testArgs:
-                  lib.nameValuePair ("${testName}${testArgsToString testArgs}") {
-                    module = import testModule (args // testArgs // { inherit exampleName; });
+                  lib.nameValuePair ("${args.testName}${testArgsToString testArgs}") {
+                    module = import args.testModule (args // testArgs // { inherit (args) exampleName; });
                     inherit problem;
                   };
               in
-              lib.listToAttrs (map mkTest (lib.cartesianProduct testCfg));
+              lib.listToAttrs (map mkTest (lib.cartesianProduct args.testCfg));
             links = { inherit webInterfaceManual; };
           };
         dnsResolverExampleDescription = ''
