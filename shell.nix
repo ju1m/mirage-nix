@@ -11,7 +11,11 @@ let
   };
   flake = (
     import flake-compat {
-      src = ./.;
+      src = {
+        # Explanation(compatibility): bypass `flake-compat`
+        # to avoid importing `./.` into the Nix store.
+        outPath = ./.;
+      };
     }
   );
 in
