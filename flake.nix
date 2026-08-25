@@ -63,18 +63,24 @@
     in
     {
       packages = foreachSystem (
-        { pkgs, ... }:
-        # Explanation(compatibility): `flake.nix` does not allow nested `packages`
-        # hence add a single `dnsvizor` package containing them,
-        # and `dnsvizor.${target}` aliases for `nix flake show`.
-        let
-          dnsvizorPkgs = pkgs.callPackage pkgs/by-name/dnsvizor/package.nix { };
-          targets = dnsvizorPkgs.update.targets ++ [ "update" ];
-        in
-        {
-          dnsvizor = pkgs.writeText "dnsvizor" "" // lib.genAttrs targets (target: dnsvizorPkgs.${target});
-        }
-        // lib.genAttrs' targets (target: lib.nameValuePair "dnsvizor.${target}" dnsvizorPkgs.${target})
+        { pkgs, unikernelPkgs, ... }:
+        lib.concatMapAttrs (
+          pkgName: pkgFile:
+          # Explanation(compatibility): `flake.nix` does not allow nested `packages`
+          # hence add a single `dnsvizor` package containing them,
+          # and `dnsvizor.${target}` aliases for `nix flake show`.
+          {
+            ${pkgName} =
+              pkgs.emptyDirectory
+              // lib.genAttrs unikernelPkgs.${pkgName}.update.targets (
+                target: unikernelPkgs.${pkgName}.${target}
+              );
+          }
+          # Description: those are said aliases for `nix flake show`.
+          // lib.genAttrs' unikernelPkgs.${pkgName}.update.targets (
+            target: lib.nameValuePair "${pkgName}.${target}" unikernelPkgs.${pkgName}.${target}
+          )
+        ) unikernelPkgs
       );
       overlays.default = final: previous: {
         mirage = final.callPackage lib/mirage.nix { };
