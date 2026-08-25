@@ -10,14 +10,14 @@
 }:
 (mirage.builds (finalAttrs: {
   pname = "dnsvizor";
-  version = "0-unstable-2026-01-21";
+  version = "0-unstable-2026-08-07";
   materializedDir = ./materialized;
   src = fetchFromForgejo {
     domain = "git.robur.coop";
     owner = "robur";
     repo = "dnsvizor";
-    rev = "0a209647142feeb653deb542cc0177621ab70483";
-    hash = "sha256-GuQJzXO2w61nBa9KsnuExBGCEsPZ7lO9hcgPy0UqXRo=";
+    rev = "b41da80dbe6116cfffb2cdc088229180e677627b";
+    hash = "sha256-veJ9LQ2QfkwGe29Pu4wFy7p9vzurW7o0GWiK1j7SrTg=";
     # ideally we should use postPatch, but we cannot
     postFetch = ''
       # TODO(linj) enable test
@@ -53,6 +53,10 @@
     ];
   };
   query = {
+    mirage = "4.11.0";
+    # FixMe(maintenance): update only after the `OCAMLFIND_CONF` regression has been fixed.
+    # Issue: https://github.com/ocaml/dune/issues/16226
+    dune = "3.23.1";
     # follow upstream CI version (.cirrus.yml) because newer ones fail to build
     ocaml-base-compiler = "4.14.2";
   };
@@ -61,12 +65,14 @@
   # Boundary literals are split in two when they would otherwise
   # be replaced by update-source-version.
   monorepoQuery = {
+    mirage = "4.11.0";
+    dune = "3.23.1";
     # mirage-dnsvizor-hvt> File "duniverse/multipart_form/lib/dune", line 5, characters 31-35:
     # mirage-dnsvizor-hvt> 5 |    base64.rfc2045 prettym pecu uutf fmt angstrom))
     # mirage-dnsvizor-hvt>                                    ^^^^
     # mirage-dnsvizor-hvt> Error: Library "uutf" not found.
     uutf =
-      assert lib.versionAtLeast ("0" + "-unstable-2026-01-21") finalAttrs.version;
+      assert lib.versionAtLeast ("0" + "-unstable-2026-08-07") finalAttrs.version;
       "1.0.3+dune"; # default version is not in the dune overlay yet
   };
 

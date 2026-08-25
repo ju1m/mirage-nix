@@ -1036,7 +1036,11 @@
     "synopsis": "Bigstring intrinsics and fast blits based on memcpy/memmove",
     "url": {
       "section": {
-        "checksum": "md5=be0a44416840852777651150757a0a3b",
+        "checksum": [
+          "sha512=b51c756925d7016ffd7eac49e69393a1897391ca2685a8c30c7b6e3917b4d66c9400b49e8986d0f03329197b95ad52e096ff83dea5e03571cb5bc3d9a5170602",
+          "sha256=ed92f5b05fbc11b9defcec734d59b1068f3717a9ae4f9705c16c7f7ac3729f28",
+          "md5=be0a44416840852777651150757a0a3b"
+        ],
         "src": "https://github.com/inhabitedtype/bigstringaf/archive/0.10.0.tar.gz"
       }
     },
@@ -1088,15 +1092,8 @@
       {
         "conditions": [
           {
-            "lhs": {
-              "arg": "1.0.0",
-              "prefix_relop": "geq"
-            },
-            "logop": "and",
-            "rhs": {
-              "arg": "2.0.0",
-              "prefix_relop": "lt"
-            }
+            "arg": "1.3.0",
+            "prefix_relop": "geq"
           }
         ],
         "val": "cmdliner"
@@ -1122,15 +1119,8 @@
       {
         "conditions": [
           {
-            "lhs": {
-              "arg": "0.28.0",
-              "prefix_relop": "geq"
-            },
-            "logop": "and",
-            "rhs": {
-              "arg": "0.36.0",
-              "prefix_relop": "lt"
-            }
+            "arg": "0.28.0",
+            "prefix_relop": "geq"
           }
         ],
         "val": "ppxlib"
@@ -1171,7 +1161,7 @@
     "doc": "https://github.com/aantron/bisect_ppx",
     "files-contents": {},
     "homepage": "https://github.com/aantron/bisect_ppx",
-    "isLocal": false,
+    "isLocal": true,
     "license": "MIT",
     "maintainer": [
       "Anton Bachin <antonbachin@yahoo.com>",
@@ -1179,17 +1169,14 @@
     ],
     "name": "bisect_ppx",
     "opam-version": "2.0",
-    "synopsis": "Code coverage for OCaml",
-    "url": {
-      "section": {
-        "checksum": [
-          "sha256=27ddeb2f60fbae50dc504e63e63cd5f012689084a76d5fdd4d1371d5341ff8db",
-          "md5=8c755c13e8d90f665986d842a41669f5"
-        ],
-        "src": "https://github.com/aantron/bisect_ppx/archive/2.8.3.tar.gz"
-      }
+    "src": {
+      "hash": "sha256-70KmBxxa/5ulcj4Ri4OZR0CVjzihLHoW5jzi9jPHF/g=",
+      "rev": "2d8dffbbfc0c431a37319d4d9a143836c9ec542e",
+      "subdir": "/",
+      "url": "https://github.com/aantron/bisect_ppx"
     },
-    "version": "2.8.3"
+    "synopsis": "Code coverage for OCaml",
+    "version": "dev"
   },
   "bos": {
     "authors": [
@@ -1210,7 +1197,7 @@
       {
         "conditions": [
           {
-            "arg": "4.01.0",
+            "arg": "4.14.0",
             "prefix_relop": "geq"
           }
         ],
@@ -1220,7 +1207,7 @@
       {
         "conditions": [
           {
-            "arg": "0.4.0",
+            "arg": "0.7.0",
             "prefix_relop": "geq"
           }
         ],
@@ -1231,7 +1218,7 @@
       {
         "conditions": [
           {
-            "arg": "0.8.0",
+            "arg": "0.8.10",
             "prefix_relop": "geq"
           }
         ],
@@ -1247,7 +1234,7 @@
         "val": "mtime"
       }
     ],
-    "description": "\nBos provides support for basic and robust interaction with the\noperating system in OCaml. It has functions to access the process\nenvironment, parse command line arguments, interact with the file\nsystem and run command line programs.\n\nBos works equally well on POSIX and Windows operating systems.\n\nBos depends on [Rresult][rresult], [Astring][astring], [Fmt][fmt],\n[Fpath][fpath] and [Logs][logs] and the OCaml Unix library. It is\ndistributed under the ISC license.\n\n[rresult]: http://erratique.ch/software/rresult\n[astring]: http://erratique.ch/software/astring\n[fmt]: http://erratique.ch/software/fmt\n[fpath]: http://erratique.ch/software/fpath\n[logs]: http://erratique.ch/software/logs\n\nHome page: http://erratique.ch/software/bos  \nContact: Daniel Bünzli `<daniel.buenzl i@erratique.ch>`",
+    "description": "\nBos provides support for basic and robust interaction with the\noperating system in OCaml. It has functions to access the process\nenvironment, parse command line arguments, interact with the file\nsystem and run command line programs.\n\nBos works equally well on POSIX and Windows operating systems.\n\nBos depends on [Rresult][rresult], [Astring][astring], [Fmt][fmt],\n[Fpath][fpath] and [Logs][logs] and the OCaml Unix library. It is\ndistributed under the ISC license.\n\n[rresult]: http://erratique.ch/software/rresult\n[astring]: http://erratique.ch/software/astring\n[fmt]: http://erratique.ch/software/fmt\n[fpath]: http://erratique.ch/software/fpath\n[logs]: http://erratique.ch/software/logs\n\nHome page: http://erratique.ch/software/bos\nContact: Daniel Bünzli `<daniel.buenzl i@erratique.ch>`",
     "dev-repo": "git+https://github.com/dune-universe/bos.git",
     "files-contents": {},
     "isLocal": false,
@@ -1270,13 +1257,13 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c6a34311946ff906824cedc2d12825ee9ad73b73bfa1581fb8100d6fc3dd5c35",
-          "sha512=5a1422809050dfbebab9691f29109e8219e27ecc4bc50c2eb714dc59036811936e9c5860b13583ab0ba7c15a00ee5b515af25642cdc312a4814076d8e76e3fd7"
+          "sha256=d703f11b6faf35a0956f86066c01c6889de6d9fca9f77157a3fd00881a5e5bfc",
+          "sha512=ee33b4e9b79224124e110af0499574e639d0b98d766f2557b97558f36f262c359ab9c416e890a5f156943123139b404e1519439f0b01ed270a09e6ca0c205f44"
         ],
-        "src": "https://github.com/dune-universe/bos/releases/download/v0.2.1%2Bdune/bos-0.2.1.dune.tbz"
+        "src": "https://github.com/ju1m/bos/archive/refs/tags/v0.3.0+dune.tar.gz"
       }
     },
-    "version": "0.2.1+dune",
+    "version": "0.3.0+dune",
     "x-commit-hash": "e8fa18765d4538bc5d6cc1501891d0cde3d1a797"
   },
   "bstr": {
@@ -1541,14 +1528,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=06d84a5147ae7f78c5466433c3453d4846ef46a71573550a1e66f8f9878f462a",
-          "sha512=c22b1fa5070977d77743581cc17f2381a358075f10811f73eed5ad44a1837781c2a20ab80dd5cb3f12361b889475c46bae770ca9e1654d8d442c051b0f7626c5"
+          "sha256=682a23c2c547c2af85084d75bb9844c5d9a7b8fddf90fa02ea4958eddce30204",
+          "sha512=4f52178e1e7441a71ee035b36285583354bdc508abbc9c17452e3d326287c570d9e71eae8c1970de244b86ff1a1f5f69b95ab5b562738eae3fcfc5e3048a982d"
         ],
-        "src": "https://github.com/mirage/ca-certs-nss/releases/download/v3.118/ca-certs-nss-3.118.tbz"
+        "src": "https://github.com/mirage/ca-certs-nss/releases/download/v3.126/ca-certs-nss-3.126.tbz"
       }
     },
-    "version": "3.118",
-    "x-commit-hash": "6940cfa1f98316b7b21b9df396862e519440c3b1",
+    "version": "3.126",
+    "x-commit-hash": "9c3ed5cf4ea97ba42d94f9956331ad31db6f98f2",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -1641,24 +1628,6 @@
       {
         "conditions": [
           {
-            "arg": "3.0.0",
-            "prefix_relop": "geq"
-          }
-        ],
-        "val": "ethernet"
-      },
-      {
-        "conditions": [
-          {
-            "arg": "9.0.0",
-            "prefix_relop": "geq"
-          }
-        ],
-        "val": "tcpip"
-      },
-      {
-        "conditions": [
-          {
             "arg": "0.2.0",
             "prefix_relop": "geq"
           }
@@ -1682,21 +1651,21 @@
     "homepage": "https://github.com/mirage/charrua",
     "isLocal": false,
     "license": "ISC",
-    "maintainer": "Christiano F. Haesbaert <haesbaert@haesbaert.org>",
+    "maintainer": "Robur <team@robur.coop>",
     "name": "charrua",
     "opam-version": "2.0",
     "synopsis": "DHCP wire frame encoder and decoder",
     "url": {
       "section": {
         "checksum": [
-          "sha256=38158606cc9df794a8081f371782198e3586854eaf8ef7ce1d73a8080aa47734",
-          "sha512=443581ab33056062bbe5f456bc5836269a1325d97e1e23c63f87525de4a438500cc4e4c1e080ed560465a97669bda8fc2526b0a8b81d7abce67fb6abc8da5048"
+          "sha256=4a250716f81ff724c2461ed2baa341f088cd706ab2bb6097348379433069e2cb",
+          "sha512=392bbf6620e1a62e333c7b44b5df31740185db05874eab7edffaaa0e4adb63960ef26e0073298784d63ad5f105fe3d9cced035a10a8a605c8fbede5604c5f65e"
         ],
-        "src": "https://github.com/mirage/charrua/releases/download/v3.0.0/charrua-3.0.0.tbz"
+        "src": "https://github.com/mirage/charrua/releases/download/v3.2.0/charrua-3.2.0.tbz"
       }
     },
-    "version": "3.0.0",
-    "x-commit-hash": "60bcf1c6bed96fe10d4ca42758d27e3edd02276a",
+    "version": "3.2.0",
+    "x-commit-hash": "20a984ff61828839d02a1fd4aba9e3b8b0e81727",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -1866,21 +1835,21 @@
     "homepage": "https://github.com/mirage/charrua",
     "isLocal": false,
     "license": "ISC",
-    "maintainer": "Christiano F. Haesbaert <haesbaert@haesbaert.org>",
+    "maintainer": "Robur <team@robur.coop>",
     "name": "charrua-server",
     "opam-version": "2.0",
     "synopsis": "DHCP server",
     "url": {
       "section": {
         "checksum": [
-          "sha256=38158606cc9df794a8081f371782198e3586854eaf8ef7ce1d73a8080aa47734",
-          "sha512=443581ab33056062bbe5f456bc5836269a1325d97e1e23c63f87525de4a438500cc4e4c1e080ed560465a97669bda8fc2526b0a8b81d7abce67fb6abc8da5048"
+          "sha256=4a250716f81ff724c2461ed2baa341f088cd706ab2bb6097348379433069e2cb",
+          "sha512=392bbf6620e1a62e333c7b44b5df31740185db05874eab7edffaaa0e4adb63960ef26e0073298784d63ad5f105fe3d9cced035a10a8a605c8fbede5604c5f65e"
         ],
-        "src": "https://github.com/mirage/charrua/releases/download/v3.0.0/charrua-3.0.0.tbz"
+        "src": "https://github.com/mirage/charrua/releases/download/v3.2.0/charrua-3.2.0.tbz"
       }
     },
-    "version": "3.0.0",
-    "x-commit-hash": "60bcf1c6bed96fe10d4ca42758d27e3edd02276a",
+    "version": "3.2.0",
+    "x-commit-hash": "20a984ff61828839d02a1fd4aba9e3b8b0e81727",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -1912,7 +1881,7 @@
         "val": "ocaml"
       }
     ],
-    "description": "Cmdliner allows the declarative definition of command line interfaces\nfor OCaml.\n\nIt provides a simple and compositional mechanism to convert command\nline arguments to OCaml values and pass them to your functions. The\nmodule automatically handles syntax errors, help messages and UNIX man\npage generation. It supports programs with single or multiple commands\nand respects most of the [POSIX][1] and [GNU][2] conventions.\n\nCmdliner has no dependencies and is distributed under the ISC license.\n\n[1]: http://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap12.html\n[2]: http://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html\n\nHome page: http://erratique.ch/software/cmdliner",
+    "description": "Cmdliner allows the declarative definition of command line interfaces\nfor OCaml.\n\nIt provides a simple and compositional mechanism to convert command\nline arguments to OCaml values and pass them to your functions. The\nmodule automatically handles command line completion, syntax errors,\nhelp messages and UNIX man page generation. It supports programs with\nsingle or multiple commands and respects most of the [POSIX] and [GNU]\nconventions.\n\nCmdliner has no dependencies and is distributed under the ISC license.\n\nHomepage: <http://erratique.ch/software/cmdliner>\n\n[POSIX]: http://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap12.html\n[GNU]: http://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html",
     "dev-repo": "git+https://github.com/dune-universe/cmdliner.git",
     "files-contents": {},
     "homepage": "https://github.com/dune-universe/cmdliner",
@@ -1931,14 +1900,17 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=0a27faaefde77c3954b4f0254105831df79cb9b2c930406aacae402b44796e53",
-          "sha512=e11d7341dc708318e04f3e9c69c680c24309a550170392c2105f9eefee2b448014145ace29bb0dc2df6fc31473a679e51fc86fe4f834f7db3e53da665233bfa5"
+          "sha256=ff11b7206e0a8469b73b9f419cf59bb386a3b2cd815366fcc5cbaf3283952fd6",
+          "sha512=4e9534d0d2896cc80ae0e3aaa9a64b09044be16f0c571118d8f4367009b912f6d3ebeeeddab2ac4567ec9339d365f9f97802858acf86753e90e500301d019f77"
         ],
-        "src": "https://github.com/dune-universe/cmdliner/releases/download/v1.3.0%2Bdune/cmdliner-1.3.0.dune.tbz"
+        "src": "https://github.com/dune-universe/cmdliner/releases/download/v2.1.1%2Bdune/cmdliner-2.1.1.dune.tbz"
       }
     },
-    "version": "1.3.0+dune",
-    "x-commit-hash": "6223f0a3a9f47a2f2574968cc6665548146bd21f"
+    "version": "2.1.1+dune",
+    "x-commit-hash": "7aadf7d569369f74cebf96e666bab4700d3be127",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
   },
   "cmdliner-stdlib": {
     "authors": [
@@ -3107,7 +3079,10 @@
   },
   "conf-pkg-config": {
     "authors": [
-      "Francois Berenger"
+      "James Henstridge",
+      "Tim Janik",
+      "Havoc Pennington",
+      "Scott Remnant"
     ],
     "bug-reports": "https://github.com/ocaml/opam-repository/issues",
     "build": [
@@ -3116,20 +3091,10 @@
           {
             "lhs": {
               "lhs": {
-                "lhs": {
-                  "id": "os"
-                },
-                "relop": "neq",
-                "rhs": "openbsd"
+                "id": "os"
               },
-              "logop": "and",
-              "rhs": {
-                "lhs": {
-                  "id": "os"
-                },
-                "relop": "neq",
-                "rhs": "win32"
-              }
+              "relop": "neq",
+              "rhs": "win32"
             },
             "logop": "and",
             "rhs": {
@@ -3215,15 +3180,60 @@
           "pkgconf",
           "--version"
         ]
-      }
-    ],
-    "depends": [
-      {
-        "group": [
-          {
-            "lhs": {
+      },
+      [
+        "sh",
+        "./write-config.sh",
+        {
+          "id": "name"
+        },
+        "-v",
+        "command:list",
+        "EOL",
+        {
+          "conditions": [
+            {
               "lhs": {
-                "conditions": [
+                "lhs": {
+                  "id": "os"
+                },
+                "relop": "neq",
+                "rhs": "win32"
+              },
+              "logop": "and",
+              "rhs": {
+                "arg": {
+                  "group": [
+                    {
+                      "lhs": {
+                        "lhs": {
+                          "id": "os"
+                        },
+                        "relop": "eq",
+                        "rhs": "macos"
+                      },
+                      "logop": "and",
+                      "rhs": {
+                        "lhs": {
+                          "id": "os-distribution"
+                        },
+                        "relop": "eq",
+                        "rhs": "homebrew"
+                      }
+                    }
+                  ]
+                },
+                "pfxop": "not"
+              }
+            }
+          ],
+          "val": "pkg-config"
+        },
+        {
+          "conditions": [
+            {
+              "lhs": {
+                "group": [
                   {
                     "lhs": {
                       "lhs": {
@@ -3237,12 +3247,273 @@
                       "lhs": {
                         "id": "os-distribution"
                       },
-                      "relop": "eq",
+                      "relop": "neq",
                       "rhs": "msys2"
                     }
                   }
-                ],
-                "val": "host-arch-x86_64"
+                ]
+              },
+              "logop": "or",
+              "rhs": {
+                "group": [
+                  {
+                    "lhs": {
+                      "lhs": {
+                        "id": "os"
+                      },
+                      "relop": "eq",
+                      "rhs": "macos"
+                    },
+                    "logop": "and",
+                    "rhs": {
+                      "lhs": {
+                        "id": "os-distribution"
+                      },
+                      "relop": "eq",
+                      "rhs": "homebrew"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "val": "pkgconf"
+        },
+        {
+          "conditions": [
+            {
+              "lhs": {
+                "lhs": {
+                  "lhs": {
+                    "id": "os"
+                  },
+                  "relop": "eq",
+                  "rhs": "win32"
+                },
+                "logop": "and",
+                "rhs": {
+                  "lhs": {
+                    "id": "os-distribution"
+                  },
+                  "relop": "eq",
+                  "rhs": "msys2"
+                }
+              },
+              "logop": "and",
+              "rhs": {
+                "id": "host-arch-x86_32:installed"
+              }
+            }
+          ],
+          "val": "i686-w64-mingw32-pkgconf"
+        },
+        {
+          "conditions": [
+            {
+              "lhs": {
+                "lhs": {
+                  "lhs": {
+                    "id": "os"
+                  },
+                  "relop": "eq",
+                  "rhs": "win32"
+                },
+                "logop": "and",
+                "rhs": {
+                  "lhs": {
+                    "id": "os-distribution"
+                  },
+                  "relop": "eq",
+                  "rhs": "cygwin"
+                }
+              },
+              "logop": "and",
+              "rhs": {
+                "id": "host-arch-x86_32:installed"
+              }
+            }
+          ],
+          "val": "--personality=i686-w64-mingw32"
+        },
+        {
+          "conditions": [
+            {
+              "lhs": {
+                "lhs": {
+                  "lhs": {
+                    "id": "os"
+                  },
+                  "relop": "eq",
+                  "rhs": "win32"
+                },
+                "logop": "and",
+                "rhs": {
+                  "lhs": {
+                    "id": "os-distribution"
+                  },
+                  "relop": "eq",
+                  "rhs": "msys2"
+                }
+              },
+              "logop": "and",
+              "rhs": {
+                "id": "host-arch-x86_64:installed"
+              }
+            }
+          ],
+          "val": "x86_64-w64-mingw32-pkgconf"
+        },
+        {
+          "conditions": [
+            {
+              "lhs": {
+                "lhs": {
+                  "lhs": {
+                    "id": "os"
+                  },
+                  "relop": "eq",
+                  "rhs": "win32"
+                },
+                "logop": "and",
+                "rhs": {
+                  "lhs": {
+                    "id": "os-distribution"
+                  },
+                  "relop": "eq",
+                  "rhs": "cygwin"
+                }
+              },
+              "logop": "and",
+              "rhs": {
+                "id": "host-arch-x86_64:installed"
+              }
+            }
+          ],
+          "val": "--personality=x86_64-w64-mingw32"
+        },
+        "EOL"
+      ],
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "lhs": {
+                "id": "os"
+              },
+              "relop": "eq",
+              "rhs": "win32"
+            },
+            "logop": "and",
+            "rhs": {
+              "lhs": {
+                "id": "os-distribution"
+              },
+              "relop": "eq",
+              "rhs": "cygwin"
+            }
+          }
+        ],
+        "val": [
+          "sh",
+          "./install-shim.sh",
+          {
+            "id": "name"
+          },
+          "pkgconf",
+          {
+            "id": "bin"
+          }
+        ]
+      }
+    ],
+    "conflicts": {
+      "conditions": [
+        {
+          "arg": "1.0.0",
+          "prefix_relop": "lt"
+        }
+      ],
+      "val": "mingw-w64-shims"
+    },
+    "depends": [
+      {
+        "group": [
+          {
+            "lhs": {
+              "lhs": {
+                "lhs": {
+                  "conditions": [
+                    {
+                      "lhs": {
+                        "lhs": {
+                          "id": "os"
+                        },
+                        "relop": "eq",
+                        "rhs": "win32"
+                      },
+                      "logop": "and",
+                      "rhs": {
+                        "group": [
+                          {
+                            "lhs": {
+                              "lhs": {
+                                "id": "os-distribution"
+                              },
+                              "relop": "eq",
+                              "rhs": "cygwin"
+                            },
+                            "logop": "or",
+                            "rhs": {
+                              "lhs": {
+                                "id": "os-distribution"
+                              },
+                              "relop": "eq",
+                              "rhs": "msys2"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "val": "host-arch-x86_64"
+                },
+                "logop": "and",
+                "rhs": {
+                  "conditions": [
+                    {
+                      "lhs": {
+                        "lhs": {
+                          "id": "os"
+                        },
+                        "relop": "eq",
+                        "rhs": "win32"
+                      },
+                      "logop": "and",
+                      "rhs": {
+                        "group": [
+                          {
+                            "lhs": {
+                              "lhs": {
+                                "id": "os-distribution"
+                              },
+                              "relop": "eq",
+                              "rhs": "cygwin"
+                            },
+                            "logop": "or",
+                            "rhs": {
+                              "lhs": {
+                                "id": "os-distribution"
+                              },
+                              "relop": "eq",
+                              "rhs": "msys2"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "val": "conf-mingw-w64-gcc-x86_64"
+                }
               },
               "logop": "and",
               "rhs": {
@@ -3271,26 +3542,79 @@
             "logop": "or",
             "rhs": {
               "lhs": {
-                "conditions": [
-                  {
-                    "lhs": {
+                "lhs": {
+                  "conditions": [
+                    {
                       "lhs": {
-                        "id": "os"
+                        "lhs": {
+                          "id": "os"
+                        },
+                        "relop": "eq",
+                        "rhs": "win32"
                       },
-                      "relop": "eq",
-                      "rhs": "win32"
-                    },
-                    "logop": "and",
-                    "rhs": {
-                      "lhs": {
-                        "id": "os-distribution"
-                      },
-                      "relop": "eq",
-                      "rhs": "msys2"
+                      "logop": "and",
+                      "rhs": {
+                        "group": [
+                          {
+                            "lhs": {
+                              "lhs": {
+                                "id": "os-distribution"
+                              },
+                              "relop": "eq",
+                              "rhs": "cygwin"
+                            },
+                            "logop": "or",
+                            "rhs": {
+                              "lhs": {
+                                "id": "os-distribution"
+                              },
+                              "relop": "eq",
+                              "rhs": "msys2"
+                            }
+                          }
+                        ]
+                      }
                     }
-                  }
-                ],
-                "val": "host-arch-x86_32"
+                  ],
+                  "val": "host-arch-x86_32"
+                },
+                "logop": "and",
+                "rhs": {
+                  "conditions": [
+                    {
+                      "lhs": {
+                        "lhs": {
+                          "id": "os"
+                        },
+                        "relop": "eq",
+                        "rhs": "win32"
+                      },
+                      "logop": "and",
+                      "rhs": {
+                        "group": [
+                          {
+                            "lhs": {
+                              "lhs": {
+                                "id": "os-distribution"
+                              },
+                              "relop": "eq",
+                              "rhs": "cygwin"
+                            },
+                            "logop": "or",
+                            "rhs": {
+                              "lhs": {
+                                "id": "os-distribution"
+                              },
+                              "relop": "eq",
+                              "rhs": "msys2"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "val": "conf-mingw-w64-gcc-i686"
+                }
               },
               "logop": "and",
               "rhs": {
@@ -3661,18 +3985,34 @@
       }
     ],
     "description": "\nThis package can only install if the pkg-config package is installed\non the system.",
-    "files-contents": {},
-    "flags": {
-      "id": "conf"
+    "dev-repo": "git+https://github.com/dra27/mingw-w64-shims.git",
+    "extra-source": {
+      "section": {
+        "install-shim.sh": {
+          "checksum": [
+            "sha256=9f99322c38b0889f5b1dafbb35ab31dc012ae98c4f98b0f740a89f943142d961",
+            "sha512=0b76a529454b00027b5768fa6ead1b8dda6bc3adab55f4288a702f4cc5d7b280be938cced6841b1556e8cf98f56ecc95b7b22006859d7a91f0ef852aea74e88c"
+          ],
+          "src": "https://raw.githubusercontent.com/dra27/mingw-w64-shims/refs/tags/1.0.1/install-shim.sh"
+        },
+        "write-config.sh": {
+          "checksum": [
+            "sha256=b6cc5f98c2cfc23a7bc7774038621a2e7e7b94ed3d3080db40bc455a2575fc7a",
+            "sha512=00c4e7c605e46c8fb4d24c40da0a9317e31e3ec723a7aac59546b1cfb180024cc76dbd27c2aca8d223047ad4b0a4bcd047443fc64a6e218a21931aaa672c3e71"
+          ],
+          "src": "https://raw.githubusercontent.com/dra27/mingw-w64-shims/refs/tags/1.0.1/write-config.sh"
+        }
+      }
     },
+    "files-contents": {},
     "homepage": "http://www.freedesktop.org/wiki/Software/pkg-config/",
     "isLocal": false,
-    "license": "GPL-1.0-or-later",
-    "maintainer": "unixjunkie@sdf.org",
+    "license": "GPL-2.0-or-later",
+    "maintainer": "David Allsopp <dra27@dra27.uk>",
     "name": "conf-pkg-config",
     "opam-version": "2.0",
     "synopsis": "Check if pkg-config is installed and create an opam switch local pkgconfig folder",
-    "version": "4"
+    "version": "5"
   },
   "cppo": {
     "authors": [
@@ -3706,7 +4046,17 @@
         {
           "conditions": [
             {
-              "id": "with-test"
+              "lhs": {
+                "id": "with-test"
+              },
+              "logop": "and",
+              "rhs": {
+                "lhs": {
+                  "id": "dune:version"
+                },
+                "relop": "lt",
+                "rhs": "3.24"
+              }
             }
           ],
           "val": "@runtest"
@@ -3931,14 +4281,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=939b8d1129ed6c634cb0f9ccc6f6d44aa1703cd05ce6091f2ee2a0162944b89b",
-          "sha512=4753307f6d7d6e6a5abf39b437efc40ab9b2c517c8cf5e9bff05a8eab91f01545a7f6ae979303adde94ff23fa14a6466ce831dc39cfc50ad04548f3cbb7a857b"
+          "sha256=b7775d6fb6e6094a8c31fdbf2127501d99ed8ceeac40271055dd52c79a3e17e7",
+          "sha512=3c05e5b8b0cdc628ef0ab1df5ca04c12ef91a5412d3638a49334995b33a512b331c16a8d14e3f9815d28585d1536c25898f9f05ffd5a12a65d2bf93d22178180"
         ],
-        "src": "https://github.com/mirage/ocaml-crunch/releases/download/v4.0.0/crunch-4.0.0.tbz"
+        "src": "https://github.com/mirage/ocaml-crunch/releases/download/v4.1.0/crunch-4.1.0.tbz"
       }
     },
-    "version": "4.0.0",
-    "x-commit-hash": "dfeeafba20f5c5825c2518707aaa3251a804df9f",
+    "version": "4.1.0",
+    "x-commit-hash": "da3e5dc0fdf5ac960c1b10063d500505e81366a1",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -4447,17 +4797,6 @@
             "id": "name"
           }
         ]
-      },
-      {
-        "conditions": [
-          {
-            "id": "with-test"
-          }
-        ],
-        "val": [
-          "ocaml",
-          "./test/test_runes.ml"
-        ]
       }
     ],
     "isLocal": false,
@@ -4472,14 +4811,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=9a6cdcb332539c87f4723fc3bd73626b2675a7b1161fdf0fed309186ce18f427",
-          "sha512=986d98eeb79f75ff69842a7ed4b93b4ff3795df7c09d455ca0c41408d67415a6743253a96c7e0de653dc62db95cb1fd29b1c654472fa11259cddde65dd5dd352"
+          "sha256=3927949a56d435ac2106cdb8394400bff989d44567eba9038e47db266cc88466",
+          "sha512=436dcd82081aa03b6d3424629950dbc64212c6281e241dad5e39812d58f2e5ddd52e0138840ad92e172baffbae81d1d34df8f5d893b83c734ac53cd95cad2707"
         ],
-        "src": "https://github.com/mirage/digestif/releases/download/v1.3.0/digestif-1.3.0.tbz"
+        "src": "https://github.com/mirage/digestif/releases/download/v1.3.1/digestif-1.3.1.tbz"
       }
     },
-    "version": "1.3.0",
-    "x-commit-hash": "0763eb3b34ac8881925c4f50055f4bff3808aed4",
+    "version": "1.3.1",
+    "x-commit-hash": "533b235c39a77d7994f76cf697ee5c45210128ca",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -4662,14 +5001,225 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c895b2d112c4aa60c0987a09eb59f0d9602bd804fecf4124795be16e4a86734a",
-          "sha512=c51c3d123a89fcde187771d405df0be7282c44c9597bdfa54ca9eedc89347a6346ff4ef461ef65557d1b1d0e50eb7d42a39267ffa11bedf1feb37d38f459e10d"
+          "sha256=23af091a6e4c13322b7f9094577e6d72dfcd5e23c4ec00fa3520edb4ff9f5fef",
+          "sha512=36b2e4eef2fd9f27bdafba10a86b078cb37e4cd461b363a57b71ca9bd7493ec2388cd9e44c374f1c2a65b73e0dd16c959aed7bd0f91151b3027737b44d4c9332"
         ],
-        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.3/dns-10.2.3.tbz"
+        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.5/dns-10.2.5.tbz"
       }
     },
-    "version": "10.2.3",
-    "x-commit-hash": "47ec8a5314694c80f6fd6be6f000ca87dd14fdc4",
+    "version": "10.2.5",
+    "x-commit-hash": "f5b5b99636cd19f243444079a461bf6a6823d079",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
+  },
+  "dns-certify": {
+    "authors": [
+      "Hannes Mehnert <hannes@mehnert.org>"
+    ],
+    "bug-reports": "https://github.com/mirage/ocaml-dns/issues",
+    "build": [
+      {
+        "conditions": [
+          {
+            "id": "dev"
+          }
+        ],
+        "val": [
+          "dune",
+          "subst"
+        ]
+      },
+      [
+        "dune",
+        "build",
+        "-p",
+        {
+          "id": "name"
+        },
+        "-j",
+        {
+          "id": "jobs"
+        }
+      ],
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": [
+          "dune",
+          "runtest",
+          "-p",
+          {
+            "id": "name"
+          },
+          "-j",
+          {
+            "id": "jobs"
+          }
+        ]
+      }
+    ],
+    "depends": [
+      {
+        "conditions": [
+          {
+            "arg": "2.8.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "dune"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "4.13.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ocaml"
+      },
+      {
+        "conditions": [
+          {
+            "arg": {
+              "id": "version"
+            },
+            "prefix_relop": "eq"
+          }
+        ],
+        "val": "dns"
+      },
+      {
+        "conditions": [
+          {
+            "arg": {
+              "id": "version"
+            },
+            "prefix_relop": "eq"
+          }
+        ],
+        "val": "dns-tsig"
+      },
+      {
+        "conditions": [
+          {
+            "arg": {
+              "id": "version"
+            },
+            "prefix_relop": "eq"
+          }
+        ],
+        "val": "dns-mirage"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "0.2.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "randomconv"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "0.1.2",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "duration"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "1.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "x509"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "4.2.1",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "lwt"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "4.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "mirage-sleep"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "5.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "mirage-ptime"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "8.2.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "tcpip"
+      },
+      "logs",
+      "mirage-crypto-ec",
+      {
+        "conditions": [
+          {
+            "arg": "1.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "mirage-crypto-pk"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "1.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "mirage-crypto-rng"
+      }
+    ],
+    "description": "\nA function to retrieve a certificate when providing a hostname, TSIG key, server\nIP, and an optional key seed. Best used with an letsencrypt unikernel.\n",
+    "dev-repo": "git+https://github.com/mirage/ocaml-dns.git",
+    "doc": "https://mirage.github.io/ocaml-dns/",
+    "files-contents": {},
+    "homepage": "https://github.com/mirage/ocaml-dns",
+    "isLocal": false,
+    "license": "BSD-2-Clause",
+    "maintainer": "team AT robur dot coop",
+    "name": "dns-certify",
+    "opam-version": "2.0",
+    "synopsis": "MirageOS let's encrypt certificate retrieval",
+    "url": {
+      "section": {
+        "checksum": [
+          "sha256=23af091a6e4c13322b7f9094577e6d72dfcd5e23c4ec00fa3520edb4ff9f5fef",
+          "sha512=36b2e4eef2fd9f27bdafba10a86b078cb37e4cd461b363a57b71ca9bd7493ec2388cd9e44c374f1c2a65b73e0dd16c959aed7bd0f91151b3027737b44d4c9332"
+        ],
+        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.5/dns-10.2.5.tbz"
+      }
+    },
+    "version": "10.2.5",
+    "x-commit-hash": "f5b5b99636cd19f243444079a461bf6a6823d079",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -4829,14 +5379,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c895b2d112c4aa60c0987a09eb59f0d9602bd804fecf4124795be16e4a86734a",
-          "sha512=c51c3d123a89fcde187771d405df0be7282c44c9597bdfa54ca9eedc89347a6346ff4ef461ef65557d1b1d0e50eb7d42a39267ffa11bedf1feb37d38f459e10d"
+          "sha256=23af091a6e4c13322b7f9094577e6d72dfcd5e23c4ec00fa3520edb4ff9f5fef",
+          "sha512=36b2e4eef2fd9f27bdafba10a86b078cb37e4cd461b363a57b71ca9bd7493ec2388cd9e44c374f1c2a65b73e0dd16c959aed7bd0f91151b3027737b44d4c9332"
         ],
-        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.3/dns-10.2.3.tbz"
+        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.5/dns-10.2.5.tbz"
       }
     },
-    "version": "10.2.3",
-    "x-commit-hash": "47ec8a5314694c80f6fd6be6f000ca87dd14fdc4",
+    "version": "10.2.5",
+    "x-commit-hash": "f5b5b99636cd19f243444079a461bf6a6823d079",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -5051,14 +5601,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c895b2d112c4aa60c0987a09eb59f0d9602bd804fecf4124795be16e4a86734a",
-          "sha512=c51c3d123a89fcde187771d405df0be7282c44c9597bdfa54ca9eedc89347a6346ff4ef461ef65557d1b1d0e50eb7d42a39267ffa11bedf1feb37d38f459e10d"
+          "sha256=23af091a6e4c13322b7f9094577e6d72dfcd5e23c4ec00fa3520edb4ff9f5fef",
+          "sha512=36b2e4eef2fd9f27bdafba10a86b078cb37e4cd461b363a57b71ca9bd7493ec2388cd9e44c374f1c2a65b73e0dd16c959aed7bd0f91151b3027737b44d4c9332"
         ],
-        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.3/dns-10.2.3.tbz"
+        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.5/dns-10.2.5.tbz"
       }
     },
-    "version": "10.2.3",
-    "x-commit-hash": "47ec8a5314694c80f6fd6be6f000ca87dd14fdc4",
+    "version": "10.2.5",
+    "x-commit-hash": "f5b5b99636cd19f243444079a461bf6a6823d079",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -5193,14 +5743,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c895b2d112c4aa60c0987a09eb59f0d9602bd804fecf4124795be16e4a86734a",
-          "sha512=c51c3d123a89fcde187771d405df0be7282c44c9597bdfa54ca9eedc89347a6346ff4ef461ef65557d1b1d0e50eb7d42a39267ffa11bedf1feb37d38f459e10d"
+          "sha256=23af091a6e4c13322b7f9094577e6d72dfcd5e23c4ec00fa3520edb4ff9f5fef",
+          "sha512=36b2e4eef2fd9f27bdafba10a86b078cb37e4cd461b363a57b71ca9bd7493ec2388cd9e44c374f1c2a65b73e0dd16c959aed7bd0f91151b3027737b44d4c9332"
         ],
-        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.3/dns-10.2.3.tbz"
+        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.5/dns-10.2.5.tbz"
       }
     },
-    "version": "10.2.3",
-    "x-commit-hash": "47ec8a5314694c80f6fd6be6f000ca87dd14fdc4",
+    "version": "10.2.5",
+    "x-commit-hash": "f5b5b99636cd19f243444079a461bf6a6823d079",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -5467,14 +6017,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c895b2d112c4aa60c0987a09eb59f0d9602bd804fecf4124795be16e4a86734a",
-          "sha512=c51c3d123a89fcde187771d405df0be7282c44c9597bdfa54ca9eedc89347a6346ff4ef461ef65557d1b1d0e50eb7d42a39267ffa11bedf1feb37d38f459e10d"
+          "sha256=23af091a6e4c13322b7f9094577e6d72dfcd5e23c4ec00fa3520edb4ff9f5fef",
+          "sha512=36b2e4eef2fd9f27bdafba10a86b078cb37e4cd461b363a57b71ca9bd7493ec2388cd9e44c374f1c2a65b73e0dd16c959aed7bd0f91151b3027737b44d4c9332"
         ],
-        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.3/dns-10.2.3.tbz"
+        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.5/dns-10.2.5.tbz"
       }
     },
-    "version": "10.2.3",
-    "x-commit-hash": "47ec8a5314694c80f6fd6be6f000ca87dd14fdc4",
+    "version": "10.2.5",
+    "x-commit-hash": "f5b5b99636cd19f243444079a461bf6a6823d079",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -5712,14 +6262,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c895b2d112c4aa60c0987a09eb59f0d9602bd804fecf4124795be16e4a86734a",
-          "sha512=c51c3d123a89fcde187771d405df0be7282c44c9597bdfa54ca9eedc89347a6346ff4ef461ef65557d1b1d0e50eb7d42a39267ffa11bedf1feb37d38f459e10d"
+          "sha256=23af091a6e4c13322b7f9094577e6d72dfcd5e23c4ec00fa3520edb4ff9f5fef",
+          "sha512=36b2e4eef2fd9f27bdafba10a86b078cb37e4cd461b363a57b71ca9bd7493ec2388cd9e44c374f1c2a65b73e0dd16c959aed7bd0f91151b3027737b44d4c9332"
         ],
-        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.3/dns-10.2.3.tbz"
+        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.5/dns-10.2.5.tbz"
       }
     },
-    "version": "10.2.3",
-    "x-commit-hash": "47ec8a5314694c80f6fd6be6f000ca87dd14fdc4",
+    "version": "10.2.5",
+    "x-commit-hash": "f5b5b99636cd19f243444079a461bf6a6823d079",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -5946,14 +6496,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c895b2d112c4aa60c0987a09eb59f0d9602bd804fecf4124795be16e4a86734a",
-          "sha512=c51c3d123a89fcde187771d405df0be7282c44c9597bdfa54ca9eedc89347a6346ff4ef461ef65557d1b1d0e50eb7d42a39267ffa11bedf1feb37d38f459e10d"
+          "sha256=23af091a6e4c13322b7f9094577e6d72dfcd5e23c4ec00fa3520edb4ff9f5fef",
+          "sha512=36b2e4eef2fd9f27bdafba10a86b078cb37e4cd461b363a57b71ca9bd7493ec2388cd9e44c374f1c2a65b73e0dd16c959aed7bd0f91151b3027737b44d4c9332"
         ],
-        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.3/dns-10.2.3.tbz"
+        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.5/dns-10.2.5.tbz"
       }
     },
-    "version": "10.2.3",
-    "x-commit-hash": "47ec8a5314694c80f6fd6be6f000ca87dd14fdc4",
+    "version": "10.2.5",
+    "x-commit-hash": "f5b5b99636cd19f243444079a461bf6a6823d079",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -6058,6 +6608,15 @@
       {
         "conditions": [
           {
+            "arg": "0.7",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "eqaf"
+      },
+      {
+        "conditions": [
+          {
             "id": "with-test"
           }
         ],
@@ -6078,14 +6637,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c895b2d112c4aa60c0987a09eb59f0d9602bd804fecf4124795be16e4a86734a",
-          "sha512=c51c3d123a89fcde187771d405df0be7282c44c9597bdfa54ca9eedc89347a6346ff4ef461ef65557d1b1d0e50eb7d42a39267ffa11bedf1feb37d38f459e10d"
+          "sha256=23af091a6e4c13322b7f9094577e6d72dfcd5e23c4ec00fa3520edb4ff9f5fef",
+          "sha512=36b2e4eef2fd9f27bdafba10a86b078cb37e4cd461b363a57b71ca9bd7493ec2388cd9e44c374f1c2a65b73e0dd16c959aed7bd0f91151b3027737b44d4c9332"
         ],
-        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.3/dns-10.2.3.tbz"
+        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.5/dns-10.2.5.tbz"
       }
     },
-    "version": "10.2.3",
-    "x-commit-hash": "47ec8a5314694c80f6fd6be6f000ca87dd14fdc4",
+    "version": "10.2.5",
+    "x-commit-hash": "f5b5b99636cd19f243444079a461bf6a6823d079",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -6173,7 +6732,14 @@
       {
         "conditions": [
           {
-            "id": "with-test"
+            "lhs": {
+              "id": "with-test"
+            },
+            "logop": "and",
+            "rhs": {
+              "arg": "1.9.1",
+              "prefix_relop": "geq"
+            }
           }
         ],
         "val": "alcotest"
@@ -6253,14 +6819,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c895b2d112c4aa60c0987a09eb59f0d9602bd804fecf4124795be16e4a86734a",
-          "sha512=c51c3d123a89fcde187771d405df0be7282c44c9597bdfa54ca9eedc89347a6346ff4ef461ef65557d1b1d0e50eb7d42a39267ffa11bedf1feb37d38f459e10d"
+          "sha256=23af091a6e4c13322b7f9094577e6d72dfcd5e23c4ec00fa3520edb4ff9f5fef",
+          "sha512=36b2e4eef2fd9f27bdafba10a86b078cb37e4cd461b363a57b71ca9bd7493ec2388cd9e44c374f1c2a65b73e0dd16c959aed7bd0f91151b3027737b44d4c9332"
         ],
-        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.3/dns-10.2.3.tbz"
+        "src": "https://github.com/mirage/ocaml-dns/releases/download/v10.2.5/dns-10.2.5.tbz"
       }
     },
-    "version": "10.2.3",
-    "x-commit-hash": "47ec8a5314694c80f6fd6be6f000ca87dd14fdc4",
+    "version": "10.2.5",
+    "x-commit-hash": "f5b5b99636cd19f243444079a461bf6a6823d079",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -6460,13 +7026,56 @@
     ],
     "depends": [
       {
-        "conditions": [
+        "group": [
           {
-            "arg": "4.08",
-            "prefix_relop": "geq"
+            "lhs": {
+              "conditions": [
+                {
+                  "arg": "4.14",
+                  "prefix_relop": "geq"
+                }
+              ],
+              "val": "ocaml"
+            },
+            "logop": "or",
+            "rhs": {
+              "group": [
+                {
+                  "lhs": {
+                    "lhs": {
+                      "conditions": [
+                        {
+                          "lhs": {
+                            "arg": "4.02",
+                            "prefix_relop": "geq"
+                          },
+                          "logop": "and",
+                          "rhs": {
+                            "arg": "4.14~~",
+                            "prefix_relop": "lt"
+                          }
+                        }
+                      ],
+                      "val": "ocaml"
+                    },
+                    "logop": "and",
+                    "rhs": "ocamlfind-secondary"
+                  },
+                  "logop": "and",
+                  "rhs": {
+                    "conditions": [
+                      {
+                        "arg": "4.14",
+                        "prefix_relop": "geq"
+                      }
+                    ],
+                    "val": "ocaml-secondary-compiler"
+                  }
+                }
+              ]
+            }
           }
-        ],
-        "val": "ocaml"
+        ]
       },
       "base-unix",
       "base-threads",
@@ -6798,6 +7407,14 @@
           }
         ],
         "val": "uutf"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "conf-git-daemon"
       }
     ],
     "description": "\n\nDune is a build system that was designed to simplify the release of\nJane Street packages. It reads metadata from \"dune\" files following a\nvery simple s-expression syntax.\n\nDune is fast, has very low-overhead, and supports parallel builds on\nall platforms. It has no system dependencies; all you need to build\ndune or packages using dune is OCaml. You don't need make or bash\nas long as the packages themselves don't use bash explicitly.\n\nDune is composable; supporting multi-package development by simply\ndropping multiple repositories into the same directory.\n\nDune also supports multi-context builds, such as building against\nseveral opam roots/switches simultaneously. This helps maintaining\npackages across several versions of OCaml and gives cross-compilation\nfor free.\n",
@@ -6816,14 +7433,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=e76d4d89368a0a70025193aeaf4f7c5b54031dba3f59bf9d2af1971dc0eceddd",
-          "sha512=a7531de073a47f644bd1e06bfb424c50a61d34245e5e0a1f32d8da920437e8fe59246304cb7aec25f797a8dafea876feceeccfe5139502ead4d1ba5c45773ef3"
+          "sha256=93b4e7157f6ba8feb61cfc5f86008efd2c59037ba78a017d92b4abf30632348f",
+          "sha512=e5566bedc651292ae54d47ba1cdbcfff48962012c1436d0f9ece49a71aa10a674affc092058b0edee56ab2a2405c545b78fde1c472c0b4704c8f58570a2f46cd"
         ],
-        "src": "https://github.com/ocaml/dune/releases/download/3.21.0/dune-3.21.0.tbz"
+        "src": "https://github.com/ocaml/dune/releases/download/3.23.1/dune-3.23.1.tbz"
       }
     },
-    "version": "3.21.0",
-    "x-commit-hash": "832d2384ce30cf98e32d797aecf81088d1bd354b",
+    "version": "3.23.1",
+    "x-commit-hash": "6f6eee69eda59e355bae2ca4e3ad1af678271883",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -6845,16 +7462,6 @@
           "subst"
         ]
       },
-      [
-        "rm",
-        "-rf",
-        "vendor/csexp"
-      ],
-      [
-        "rm",
-        "-rf",
-        "vendor/pp"
-      ],
       [
         "dune",
         "build",
@@ -6881,7 +7488,7 @@
       {
         "conditions": [
           {
-            "arg": "3.21",
+            "arg": "3.23",
             "prefix_relop": "geq"
           }
         ],
@@ -6890,7 +7497,7 @@
       {
         "conditions": [
           {
-            "arg": "4.08.0",
+            "arg": "4.14.0",
             "prefix_relop": "geq"
           }
         ],
@@ -6931,14 +7538,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=e76d4d89368a0a70025193aeaf4f7c5b54031dba3f59bf9d2af1971dc0eceddd",
-          "sha512=a7531de073a47f644bd1e06bfb424c50a61d34245e5e0a1f32d8da920437e8fe59246304cb7aec25f797a8dafea876feceeccfe5139502ead4d1ba5c45773ef3"
+          "sha256=93b4e7157f6ba8feb61cfc5f86008efd2c59037ba78a017d92b4abf30632348f",
+          "sha512=e5566bedc651292ae54d47ba1cdbcfff48962012c1436d0f9ece49a71aa10a674affc092058b0edee56ab2a2405c545b78fde1c472c0b4704c8f58570a2f46cd"
         ],
-        "src": "https://github.com/ocaml/dune/releases/download/3.21.0/dune-3.21.0.tbz"
+        "src": "https://github.com/ocaml/dune/releases/download/3.23.1/dune-3.23.1.tbz"
       }
     },
-    "version": "3.21.0",
-    "x-commit-hash": "832d2384ce30cf98e32d797aecf81088d1bd354b",
+    "version": "3.23.1",
+    "x-commit-hash": "6f6eee69eda59e355bae2ca4e3ad1af678271883",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -7039,14 +7646,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=c738c1f38cfb99820c121cd3ddf819de4b2228f0d50eacbd1cc3ce99e7c71e2b",
-          "sha512=0de9e15c7d6188872ddd9994f08616c4a1822e4ac92724efa2c312fbb2fc44cd7cbe4b36bcf66a8451d510c1fc95de481760afbcacb8f83e183262595dcf5f0c"
+          "sha256=cd88da693951e1212ea83e24ce17f767e95a39a9ce2adda0654b32d75ce68c13",
+          "sha512=248fec8ba9ebf6ac7cc91055307496658974e402bb9de6d37027fbe51b6708247530392cc60f954cf8d7ed8a03ce0d2da440fbd9f8720e398a446e0a43f590ad"
         ],
-        "src": "https://github.com/hannesm/duration/releases/download/v0.2.1/duration-0.2.1.tbz"
+        "src": "https://github.com/hannesm/duration/releases/download/v0.3.1/duration-0.3.1.tbz"
       }
     },
-    "version": "0.2.1",
-    "x-commit-hash": "6abe42ebe585a96f79eb91045911b9a73c1db19e",
+    "version": "0.3.1",
+    "x-commit-hash": "7bf34d3c03586b9a8680a617f2b3a30f16513710",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -9092,14 +9699,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=1e617df8abd45843c823e9be75267d27426cb578661cf25622d50b25ae14a319",
-          "sha512=09c37f963d27f697ee17b83f26364002cc2e60516c2199f78cd20663aaf293a1ce4380d728641b4c9b79066dc814c8f9293722a567ce6898261c4e98b34d80c2"
+          "sha256=08a3fa6e6411490b6661e5b10229ea9ec6b8c3738e9f6b255859b13f145be136",
+          "sha512=719f32fd5a5c854ff5af2c668d20f9c4de4659a3d7d03d260e537ab402d9dd85a5350e611bfc3b8df10f6be02b5941d55a96cd2b4dccc0ad2710c95a51373bd8"
         ],
-        "src": "https://github.com/mirage/ocaml-ipaddr/releases/download/v5.6.1/ipaddr-5.6.1.tbz"
+        "src": "https://github.com/mirage/ocaml-ipaddr/releases/download/v5.6.2/ipaddr-5.6.2.tbz"
       }
     },
-    "version": "5.6.1",
-    "x-commit-hash": "70f5308ee002104d45542c7fa9a6afdf3d9f3a0b",
+    "version": "5.6.2",
+    "x-commit-hash": "8332fff3deda91b231c6f90c03b8aba5c355f0c9",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -9213,14 +9820,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=1e617df8abd45843c823e9be75267d27426cb578661cf25622d50b25ae14a319",
-          "sha512=09c37f963d27f697ee17b83f26364002cc2e60516c2199f78cd20663aaf293a1ce4380d728641b4c9b79066dc814c8f9293722a567ce6898261c4e98b34d80c2"
+          "sha256=08a3fa6e6411490b6661e5b10229ea9ec6b8c3738e9f6b255859b13f145be136",
+          "sha512=719f32fd5a5c854ff5af2c668d20f9c4de4659a3d7d03d260e537ab402d9dd85a5350e611bfc3b8df10f6be02b5941d55a96cd2b4dccc0ad2710c95a51373bd8"
         ],
-        "src": "https://github.com/mirage/ocaml-ipaddr/releases/download/v5.6.1/ipaddr-5.6.1.tbz"
+        "src": "https://github.com/mirage/ocaml-ipaddr/releases/download/v5.6.2/ipaddr-5.6.2.tbz"
       }
     },
-    "version": "5.6.1",
-    "x-commit-hash": "70f5308ee002104d45542c7fa9a6afdf3d9f3a0b",
+    "version": "5.6.2",
+    "x-commit-hash": "8332fff3deda91b231c6f90c03b8aba5c355f0c9",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -9361,14 +9968,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=d161582b0efe66d958dd6b8c9c21068e9f6454ce218377d6cf87823dec62e0ce",
-          "sha512=8c518494a7c2e030c079a22fc0d27e4dccd1b2d6edb8fcd2ee7121cdd3d56ff416a37876b6bb13b8be015922c3487536038373bfa0934a165055c1cb5dd3c2e1"
+          "sha256=996c165b6e9532816d4ae5c7e77527a70d2f111a25583c0aeb72f4b0278569c5",
+          "sha512=85a8e95389be1040fa1ac76dc49a87d205366b5220f5c023d5ec3e72d5c193a9379dfd920027b9b58aee227300a4c558763380f607cc6558497352c13a82ed15"
         ],
-        "src": "https://github.com/robur-coop/kdf/releases/download/v1.0.0/kdf-1.0.0.tbz"
+        "src": "https://github.com/robur-coop/kdf/releases/download/v1.1.0/kdf-1.1.0.tbz"
       }
     },
-    "version": "1.0.0",
-    "x-commit-hash": "a6da77f39fd1b3acc6865a9a20dca567a5e1fe89",
+    "version": "1.1.0",
+    "x-commit-hash": "b218591fb7b9204602e76e82731addc32d655453",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -9860,7 +10467,7 @@
       {
         "conditions": [
           {
-            "arg": "3.15",
+            "arg": "3.18",
             "prefix_relop": "geq"
           }
         ],
@@ -9869,7 +10476,7 @@
       {
         "conditions": [
           {
-            "arg": "4.08",
+            "arg": "4.14",
             "prefix_relop": "geq"
           }
         ],
@@ -9894,7 +10501,7 @@
         "conditions": [
           {
             "lhs": {
-              "id": "with-dev-setup"
+              "id": "dev"
             },
             "logop": "and",
             "rhs": {
@@ -9926,7 +10533,8 @@
     "depopts": [
       "base-threads",
       "base-unix",
-      "conf-libev"
+      "conf-libev",
+      "lwt_runtime_events"
     ],
     "description": "\nA promise is a value that may become determined in the future.\n\nLwt provides typed, composable promises. Promises that are resolved by I/O are\nresolved by Lwt in parallel.\n\nMeanwhile, OCaml code, including code creating and waiting on promises, runs in\na single thread by default. This reduces the need for locks or other\nsynchronization primitives. Code can be run in parallel on an opt-in basis.\n",
     "dev-repo": "git+https://github.com/ocsigen/lwt.git",
@@ -9945,13 +10553,13 @@
     "url": {
       "section": {
         "checksum": [
-          "md5=9687c14532a90af1098b646bde219a70",
-          "sha512=44ad793741a3ba52dfc07a190790d6e3207f146c42a4e1e11adc76f9d7fc9bee93d7fe18376882bb27e7e7e286be5807498884367b172a4ebc067028fa0c824c"
+          "md5=00bc7eb2772a28530f7365a7040f0c4f",
+          "sha512=a4737a2fc44aaeedca46ec6134c07013d5cf44039a988a6e79a40715a53e43601d4c91bbf11a8e89540528d912b8fa487e3068465c136c1156a872258eb3443b"
         ],
-        "src": "https://github.com/ocsigen/lwt/archive/refs/tags/5.9.2.tar.gz"
+        "src": "https://github.com/ocsigen/lwt/archive/refs/tags/6.1.2.tar.gz"
       }
     },
-    "version": "5.9.2",
+    "version": "6.1.2",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -10174,14 +10782,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=1e617df8abd45843c823e9be75267d27426cb578661cf25622d50b25ae14a319",
-          "sha512=09c37f963d27f697ee17b83f26364002cc2e60516c2199f78cd20663aaf293a1ce4380d728641b4c9b79066dc814c8f9293722a567ce6898261c4e98b34d80c2"
+          "sha256=08a3fa6e6411490b6661e5b10229ea9ec6b8c3738e9f6b255859b13f145be136",
+          "sha512=719f32fd5a5c854ff5af2c668d20f9c4de4659a3d7d03d260e537ab402d9dd85a5350e611bfc3b8df10f6be02b5941d55a96cd2b4dccc0ad2710c95a51373bd8"
         ],
-        "src": "https://github.com/mirage/ocaml-ipaddr/releases/download/v5.6.1/ipaddr-5.6.1.tbz"
+        "src": "https://github.com/mirage/ocaml-ipaddr/releases/download/v5.6.2/ipaddr-5.6.2.tbz"
       }
     },
-    "version": "5.6.1",
-    "x-commit-hash": "70f5308ee002104d45542c7fa9a6afdf3d9f3a0b",
+    "version": "5.6.2",
+    "x-commit-hash": "8332fff3deda91b231c6f90c03b8aba5c355f0c9",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -10295,14 +10903,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=1e617df8abd45843c823e9be75267d27426cb578661cf25622d50b25ae14a319",
-          "sha512=09c37f963d27f697ee17b83f26364002cc2e60516c2199f78cd20663aaf293a1ce4380d728641b4c9b79066dc814c8f9293722a567ce6898261c4e98b34d80c2"
+          "sha256=08a3fa6e6411490b6661e5b10229ea9ec6b8c3738e9f6b255859b13f145be136",
+          "sha512=719f32fd5a5c854ff5af2c668d20f9c4de4659a3d7d03d260e537ab402d9dd85a5350e611bfc3b8df10f6be02b5941d55a96cd2b4dccc0ad2710c95a51373bd8"
         ],
-        "src": "https://github.com/mirage/ocaml-ipaddr/releases/download/v5.6.1/ipaddr-5.6.1.tbz"
+        "src": "https://github.com/mirage/ocaml-ipaddr/releases/download/v5.6.2/ipaddr-5.6.2.tbz"
       }
     },
-    "version": "5.6.1",
-    "x-commit-hash": "70f5308ee002104d45542c7fa9a6afdf3d9f3a0b",
+    "version": "5.6.2",
+    "x-commit-hash": "8332fff3deda91b231c6f90c03b8aba5c355f0c9",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -10403,13 +11011,13 @@
     "url": {
       "section": {
         "checksum": [
-          "md5=9dc415bda0e3dd274892d59876630ee5",
-          "sha512=2a06d7411ff02b45de1ac27fe124cd22b78f8fd400f708e8be1ed93ff0749c024abd142486ac5375ecde82333d9b9c860f962f5598519c45dd6ee65008b86230"
+          "md5=e993231085db95ab011ffe0cd606d9dd",
+          "sha512=aafad186f328ae8dd4cc69af0f30c1a0b208cf5148a7a94c150099be03838503c5ec12918de26cd7f794b5a72f114bc1bae8d81058bd0ea10372a3b06818687e"
         ],
-        "src": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20260203/archive.tar.gz"
+        "src": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20260209/archive.tar.gz"
       }
     },
-    "version": "20260203",
+    "version": "20260209",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -10478,13 +11086,13 @@
     "url": {
       "section": {
         "checksum": [
-          "md5=9dc415bda0e3dd274892d59876630ee5",
-          "sha512=2a06d7411ff02b45de1ac27fe124cd22b78f8fd400f708e8be1ed93ff0749c024abd142486ac5375ecde82333d9b9c860f962f5598519c45dd6ee65008b86230"
+          "md5=e993231085db95ab011ffe0cd606d9dd",
+          "sha512=aafad186f328ae8dd4cc69af0f30c1a0b208cf5148a7a94c150099be03838503c5ec12918de26cd7f794b5a72f114bc1bae8d81058bd0ea10372a3b06818687e"
         ],
-        "src": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20260203/archive.tar.gz"
+        "src": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20260209/archive.tar.gz"
       }
     },
-    "version": "20260203",
+    "version": "20260209",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -10553,13 +11161,13 @@
     "url": {
       "section": {
         "checksum": [
-          "md5=9dc415bda0e3dd274892d59876630ee5",
-          "sha512=2a06d7411ff02b45de1ac27fe124cd22b78f8fd400f708e8be1ed93ff0749c024abd142486ac5375ecde82333d9b9c860f962f5598519c45dd6ee65008b86230"
+          "md5=e993231085db95ab011ffe0cd606d9dd",
+          "sha512=aafad186f328ae8dd4cc69af0f30c1a0b208cf5148a7a94c150099be03838503c5ec12918de26cd7f794b5a72f114bc1bae8d81058bd0ea10372a3b06818687e"
         ],
-        "src": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20260203/archive.tar.gz"
+        "src": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20260209/archive.tar.gz"
       }
     },
-    "version": "20260203",
+    "version": "20260209",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -10629,13 +11237,13 @@
     "url": {
       "section": {
         "checksum": [
-          "md5=9dc415bda0e3dd274892d59876630ee5",
-          "sha512=2a06d7411ff02b45de1ac27fe124cd22b78f8fd400f708e8be1ed93ff0749c024abd142486ac5375ecde82333d9b9c860f962f5598519c45dd6ee65008b86230"
+          "md5=e993231085db95ab011ffe0cd606d9dd",
+          "sha512=aafad186f328ae8dd4cc69af0f30c1a0b208cf5148a7a94c150099be03838503c5ec12918de26cd7f794b5a72f114bc1bae8d81058bd0ea10372a3b06818687e"
         ],
-        "src": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20260203/archive.tar.gz"
+        "src": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20260209/archive.tar.gz"
       }
     },
-    "version": "20260203",
+    "version": "20260209",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -10705,13 +11313,13 @@
     "url": {
       "section": {
         "checksum": [
-          "md5=9dc415bda0e3dd274892d59876630ee5",
-          "sha512=2a06d7411ff02b45de1ac27fe124cd22b78f8fd400f708e8be1ed93ff0749c024abd142486ac5375ecde82333d9b9c860f962f5598519c45dd6ee65008b86230"
+          "md5=e993231085db95ab011ffe0cd606d9dd",
+          "sha512=aafad186f328ae8dd4cc69af0f30c1a0b208cf5148a7a94c150099be03838503c5ec12918de26cd7f794b5a72f114bc1bae8d81058bd0ea10372a3b06818687e"
         ],
-        "src": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20260203/archive.tar.gz"
+        "src": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20260209/archive.tar.gz"
       }
     },
-    "version": "20260203",
+    "version": "20260209",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -11128,14 +11736,17 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=954df1ceb548a922a785440885a5d16a6af7f735d6c370ed35d339114b69e29f",
-          "sha512=dcfa1c2e13d18af3beb0ff3b080b50675ea390ba6d4d22ccb4ec5dc50ca1bc8f562e76b3a140ce155eb4862a08f94f3ac88cb650def7b2d6632db09a327c4cd2"
+          "sha256=385aaa773639f6974c60f4c4b7820f2757228c6b09dd792fdb10f58dcd61cd4e",
+          "sha512=f069a77bef94dca971efbcfa12cdc3aeeecf01371850b9d41a9788ffc54c8af44a1300809d901484397d02e268a71a39170aac3ba6870f4fb18e71cb74170058"
         ],
-        "src": "https://github.com/dinosaure/mimic/releases/download/0.0.9/mimic-0.0.9.tbz"
+        "src": "https://github.com/dinosaure/mimic/releases/download/0.0.10/mimic-0.0.10.tbz"
       }
     },
-    "version": "0.0.9",
-    "x-commit-hash": "6dcb17bc52cf67a64fcab42d593cc42ddb3d9d1c"
+    "version": "0.0.10",
+    "x-commit-hash": "c84085c7ac2f79360bbd15c03b09e41bcb7d4d49",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
   },
   "mimic-happy-eyeballs": {
     "authors": "Romain Calascibetta",
@@ -11238,14 +11849,17 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=954df1ceb548a922a785440885a5d16a6af7f735d6c370ed35d339114b69e29f",
-          "sha512=dcfa1c2e13d18af3beb0ff3b080b50675ea390ba6d4d22ccb4ec5dc50ca1bc8f562e76b3a140ce155eb4862a08f94f3ac88cb650def7b2d6632db09a327c4cd2"
+          "sha256=385aaa773639f6974c60f4c4b7820f2757228c6b09dd792fdb10f58dcd61cd4e",
+          "sha512=f069a77bef94dca971efbcfa12cdc3aeeecf01371850b9d41a9788ffc54c8af44a1300809d901484397d02e268a71a39170aac3ba6870f4fb18e71cb74170058"
         ],
-        "src": "https://github.com/dinosaure/mimic/releases/download/0.0.9/mimic-0.0.9.tbz"
+        "src": "https://github.com/dinosaure/mimic/releases/download/0.0.10/mimic-0.0.10.tbz"
       }
     },
-    "version": "0.0.9",
-    "x-commit-hash": "6dcb17bc52cf67a64fcab42d593cc42ddb3d9d1c"
+    "version": "0.0.10",
+    "x-commit-hash": "c84085c7ac2f79360bbd15c03b09e41bcb7d4d49",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
   },
   "mirage": {
     "authors": [
@@ -11360,37 +11974,8 @@
       {
         "conditions": [
           {
-            "lhs": {
-              "arg": "1.2.0",
-              "prefix_relop": "geq"
-            },
-            "logop": "and",
-            "rhs": {
-              "arg": "2.0.0",
-              "prefix_relop": "lt"
-            }
-          }
-        ],
-        "val": "cmdliner"
-      },
-      {
-        "conditions": [
-          {
-            "lhs": {
-              "lhs": {
-                "id": "with-test"
-              },
-              "logop": "and",
-              "rhs": {
-                "arg": "1.3.0",
-                "prefix_relop": "geq"
-              }
-            },
-            "logop": "and",
-            "rhs": {
-              "arg": "2.0.0",
-              "prefix_relop": "lt"
-            }
+            "arg": "2.0.0",
+            "prefix_relop": "geq"
           }
         ],
         "val": "cmdliner"
@@ -11508,7 +12093,7 @@
         "val": "dune"
       }
     ],
-    "description": "\nMirageOS is a library operating system that constructs unikernels for\nsecure, high-performance network applications across a variety of\ncloud computing and mobile platforms. Code can be developed on a\nnormal OS such as Linux or MacOS X, and then compiled into a\nfully-standalone, specialised unikernel that runs under the Xen\nhypervisor.\n\nSince Xen powers most public cloud computing infrastructure such as\nAmazon EC2 or Rackspace, this lets your servers run more cheaply,\nsecurely and with finer control than with a full software stack.\n",
+    "description": "\nMirageOS is a library operating system that constructs unikernels for\nsecure, high-performance network applications across a variety of\ncloud computing and mobile platforms. Code can be developed on a\nnormal OS such as Linux or MacOS X, and then compiled into a\nfully-standalone, specialised unikernel that runs under the Xen\nor KVM (or FreeBSD BHyve or OpenBSD VMM) hypervisor. It also runs\non the Muen separation kernel.\n\nSince Xen powers most public cloud computing infrastructure such as\nAmazon EC2 or Rackspace, this lets your servers run more cheaply,\nsecurely and with finer control than with a full software stack.\n",
     "dev-repo": "git+https://github.com/mirage/mirage.git",
     "doc": "https://mirage.github.io/mirage/",
     "files-contents": {},
@@ -11529,14 +12114,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=1155b5e9a585d3b44dfdd72777d94a7222b0f88a1737593bfb1f09954b6fb914",
-          "sha512=c59a0051f1037d7dd5bb81dfc8a265117b533383d0b285e0c2101b44d2ca8bcab40c432ce696a5b44397216e78ac59863f1ab6c5fb33bb338ca18d7ef359500f"
+          "sha256=18a84ddf9d210745d8b6e9cb2cbb8ce3cb696e2898a54749027e9d85992bfe5c",
+          "sha512=d7cca5ae480fc7ee8c4db28c70d2868c2bc95075796c177df442f10883e1777ba3e51d248bd2feeffbc3b0cbe99d77bc61e62d794102c469cc646f63e4b65dcb"
         ],
-        "src": "https://github.com/mirage/mirage/releases/download/v4.10.1/mirage-4.10.1.tbz"
+        "src": "https://github.com/mirage/mirage/releases/download/v4.11.0/mirage-4.11.0.tbz"
       }
     },
-    "version": "4.10.1",
-    "x-commit-hash": "7973e5ef58b09c836327e1c95429346c20613a1c",
+    "version": "4.11.0",
+    "x-commit-hash": "4a4b3978e789cb7f7710059d2d3456a68c3d85a9",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -11810,14 +12395,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=739a9d39f34027fbc93557f87c5cac4190a52bddadff72f212faa803d6215874",
-          "sha512=6b72c77026d91d3a8695012f229c54f8131c873955c1ac2177a5f4b26b38d6ff71627fdc264530556830d38e098fe8d9a8fc1504659b75a18c2bf565bb4d896f"
+          "sha256=840fbf4136605b4a1f1dd5c0611932a274fe3bf97464c82a6b3a9731a68e208e",
+          "sha512=8b983bf9e7fc03f3442b9e00f8ec562d6f0ae18702d10a9ca79182e135f85d1c264393d4033c78e51b945dbe4eb7f436a25ccfedeb0c1f9cdb4c46927cd94fbf"
         ],
-        "src": "https://github.com/mirage/mirage-crypto/releases/download/v2.0.2/mirage-crypto-2.0.2.tbz"
+        "src": "https://github.com/mirage/mirage-crypto/releases/download/v2.3.0/mirage-crypto-2.3.0.tbz"
       }
     },
-    "version": "2.0.2",
-    "x-commit-hash": "154ff24042394d73222935a3cc332a897a9058af",
+    "version": "2.3.0",
+    "x-commit-hash": "00ed1238df988c6c109c753cedb87388d352a60c",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -12034,14 +12619,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=739a9d39f34027fbc93557f87c5cac4190a52bddadff72f212faa803d6215874",
-          "sha512=6b72c77026d91d3a8695012f229c54f8131c873955c1ac2177a5f4b26b38d6ff71627fdc264530556830d38e098fe8d9a8fc1504659b75a18c2bf565bb4d896f"
+          "sha256=840fbf4136605b4a1f1dd5c0611932a274fe3bf97464c82a6b3a9731a68e208e",
+          "sha512=8b983bf9e7fc03f3442b9e00f8ec562d6f0ae18702d10a9ca79182e135f85d1c264393d4033c78e51b945dbe4eb7f436a25ccfedeb0c1f9cdb4c46927cd94fbf"
         ],
-        "src": "https://github.com/mirage/mirage-crypto/releases/download/v2.0.2/mirage-crypto-2.0.2.tbz"
+        "src": "https://github.com/mirage/mirage-crypto/releases/download/v2.3.0/mirage-crypto-2.3.0.tbz"
       }
     },
-    "version": "2.0.2",
-    "x-commit-hash": "154ff24042394d73222935a3cc332a897a9058af",
+    "version": "2.3.0",
+    "x-commit-hash": "00ed1238df988c6c109c753cedb87388d352a60c",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -12228,14 +12813,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=739a9d39f34027fbc93557f87c5cac4190a52bddadff72f212faa803d6215874",
-          "sha512=6b72c77026d91d3a8695012f229c54f8131c873955c1ac2177a5f4b26b38d6ff71627fdc264530556830d38e098fe8d9a8fc1504659b75a18c2bf565bb4d896f"
+          "sha256=840fbf4136605b4a1f1dd5c0611932a274fe3bf97464c82a6b3a9731a68e208e",
+          "sha512=8b983bf9e7fc03f3442b9e00f8ec562d6f0ae18702d10a9ca79182e135f85d1c264393d4033c78e51b945dbe4eb7f436a25ccfedeb0c1f9cdb4c46927cd94fbf"
         ],
-        "src": "https://github.com/mirage/mirage-crypto/releases/download/v2.0.2/mirage-crypto-2.0.2.tbz"
+        "src": "https://github.com/mirage/mirage-crypto/releases/download/v2.3.0/mirage-crypto-2.3.0.tbz"
       }
     },
-    "version": "2.0.2",
-    "x-commit-hash": "154ff24042394d73222935a3cc332a897a9058af",
+    "version": "2.3.0",
+    "x-commit-hash": "00ed1238df988c6c109c753cedb87388d352a60c",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -12396,7 +12981,7 @@
     "files-contents": {},
     "homepage": "https://github.com/mirage/mirage-crypto",
     "isLocal": false,
-    "license": "ISC",
+    "license": "BSD-2-Clause",
     "maintainer": "Hannes Mehnert <hannes@mehnert.org>",
     "name": "mirage-crypto-rng",
     "opam-version": "2.0",
@@ -12404,14 +12989,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=739a9d39f34027fbc93557f87c5cac4190a52bddadff72f212faa803d6215874",
-          "sha512=6b72c77026d91d3a8695012f229c54f8131c873955c1ac2177a5f4b26b38d6ff71627fdc264530556830d38e098fe8d9a8fc1504659b75a18c2bf565bb4d896f"
+          "sha256=840fbf4136605b4a1f1dd5c0611932a274fe3bf97464c82a6b3a9731a68e208e",
+          "sha512=8b983bf9e7fc03f3442b9e00f8ec562d6f0ae18702d10a9ca79182e135f85d1c264393d4033c78e51b945dbe4eb7f436a25ccfedeb0c1f9cdb4c46927cd94fbf"
         ],
-        "src": "https://github.com/mirage/mirage-crypto/releases/download/v2.0.2/mirage-crypto-2.0.2.tbz"
+        "src": "https://github.com/mirage/mirage-crypto/releases/download/v2.3.0/mirage-crypto-2.3.0.tbz"
       }
     },
-    "version": "2.0.2",
-    "x-commit-hash": "154ff24042394d73222935a3cc332a897a9058af",
+    "version": "2.3.0",
+    "x-commit-hash": "00ed1238df988c6c109c753cedb87388d352a60c",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -12579,14 +13164,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=739a9d39f34027fbc93557f87c5cac4190a52bddadff72f212faa803d6215874",
-          "sha512=6b72c77026d91d3a8695012f229c54f8131c873955c1ac2177a5f4b26b38d6ff71627fdc264530556830d38e098fe8d9a8fc1504659b75a18c2bf565bb4d896f"
+          "sha256=840fbf4136605b4a1f1dd5c0611932a274fe3bf97464c82a6b3a9731a68e208e",
+          "sha512=8b983bf9e7fc03f3442b9e00f8ec562d6f0ae18702d10a9ca79182e135f85d1c264393d4033c78e51b945dbe4eb7f436a25ccfedeb0c1f9cdb4c46927cd94fbf"
         ],
-        "src": "https://github.com/mirage/mirage-crypto/releases/download/v2.0.2/mirage-crypto-2.0.2.tbz"
+        "src": "https://github.com/mirage/mirage-crypto/releases/download/v2.3.0/mirage-crypto-2.3.0.tbz"
       }
     },
-    "version": "2.0.2",
-    "x-commit-hash": "154ff24042394d73222935a3cc332a897a9058af",
+    "version": "2.3.0",
+    "x-commit-hash": "00ed1238df988c6c109c753cedb87388d352a60c",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -13365,6 +13950,132 @@
       "(latest)"
     ]
   },
+  "mirage-net-unix": {
+    "authors": [
+      "Anil Madhavapeddy",
+      "David Scott",
+      "Thomas Gazagnaire",
+      "Hannes Mehnert"
+    ],
+    "bug-reports": "https://github.com/mirage/mirage-net-unix/issues",
+    "build": [
+      {
+        "conditions": [
+          {
+            "id": "dev"
+          }
+        ],
+        "val": [
+          "dune",
+          "subst"
+        ]
+      },
+      [
+        "dune",
+        "build",
+        "-p",
+        {
+          "id": "name"
+        },
+        "-j",
+        {
+          "id": "jobs"
+        }
+      ]
+    ],
+    "depends": [
+      {
+        "conditions": [
+          {
+            "arg": "4.06.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ocaml"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "1.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "dune"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "1.7.1",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "cstruct"
+      },
+      "cstruct-lwt",
+      {
+        "conditions": [
+          {
+            "arg": "2.4.3",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "lwt"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "3.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "mirage-net"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "1.8.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "tuntap"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "alcotest"
+      },
+      "logs",
+      "macaddr"
+    ],
+    "description": "\nThis interface exposes raw Ethernet frames using `ocaml-tuntap`,\nsuitable for use with an OCaml network stack such as the one\nfound at <https://github.com/mirage/mirage-tcpip>.\n",
+    "dev-repo": "git+https://github.com/mirage/mirage-net-unix.git",
+    "doc": "https://mirage.github.io/mirage-net-unix/",
+    "files-contents": {},
+    "homepage": "https://github.com/mirage/mirage-net-unix",
+    "isLocal": false,
+    "license": "ISC",
+    "maintainer": "anil@recoil.org",
+    "name": "mirage-net-unix",
+    "opam-version": "2.0",
+    "synopsis": "Unix implementation of the Mirage_net_lwt interface",
+    "url": {
+      "section": {
+        "checksum": [
+          "sha256=87a9ea89634d24707952c5bfa1bda1be17e030377c90dca4ed0feadee55293cc",
+          "sha512=f42039d4937e07db8a2b267b2c46ceeaeee6b621eafe1641759efa7697d07924ac833082711420aac8f3b8e7959a0093d17881b0ff3d60a3a691c2304cea6868"
+        ],
+        "src": "https://github.com/mirage/mirage-net-unix/releases/download/v3.0.0/mirage-net-unix-3.0.0.tbz"
+      }
+    },
+    "version": "3.0.0",
+    "x-commit-hash": "22901f7e833837b0d72cdaf93afc9a86ae1ddd46",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
+  },
   "mirage-net-xen": {
     "authors": [
       "Anil Madhavapeddy",
@@ -13760,18 +14471,32 @@
       {
         "conditions": [
           {
-            "lhs": {
-              "arg": "4.0.0",
-              "prefix_relop": "geq"
-            },
-            "logop": "and",
-            "rhs": {
-              "arg": "6.0.0",
-              "prefix_relop": "lt"
-            }
+            "arg": "4.0.0",
+            "prefix_relop": "geq"
           }
         ],
         "val": "lwt"
+      },
+      {
+        "lhs": {
+          "conditions": [
+            {
+              "arg": "3.22",
+              "prefix_relop": "geq"
+            }
+          ],
+          "val": "dune"
+        },
+        "logop": "or",
+        "rhs": {
+          "conditions": [
+            {
+              "arg": "6",
+              "prefix_relop": "lt"
+            }
+          ],
+          "val": "lwt"
+        }
       },
       {
         "conditions": [
@@ -13813,14 +14538,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=f5eb059835524fe165f487d15d790c33c56b2fcdd08fa475cd41e5b051f9b47e",
-          "sha512=56256cf7d0b0647a223a78c90593f9a172f5a9f438123b633c47b47b95a2ec709111bd718d9ffa077aa1da8578671215cd8b80f2c79b70173b5cf277ad5a663a"
+          "sha256=2cbd7924f82d85ad8ed6bab2f8dc95e6bd15a723532193b56af01813ab20b1a7",
+          "sha512=995dd413d02cf279d4de4178d0fda61fdcbad9518f2b114eb76d0c16cd4eeb602fbd44a8916e29b62b307fca9a5f374f7c3d104287f4f7ee9c89e706876a9895"
         ],
-        "src": "https://github.com/mirage/mirage/releases/download/v4.10.4/mirage-4.10.4.tbz"
+        "src": "https://github.com/mirage/mirage/releases/download/v4.11.2/mirage-4.11.2.tbz"
       }
     },
-    "version": "4.10.4",
-    "x-commit-hash": "f1b668e90ae08a224f4a534fa940c3a164c21997",
+    "version": "4.11.2",
+    "x-commit-hash": "21c8f06a1c931ec3db49b379bcdc67683e1bd6a4",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -13917,6 +14642,119 @@
     },
     "version": "4.1.0",
     "x-commit-hash": "1d5a6743751401479c91dcb34345016a69a8a188",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
+  },
+  "mirage-unix": {
+    "authors": "The MirageOS team",
+    "bug-reports": "https://github.com/mirage/mirage-unix/issues/",
+    "build": [
+      {
+        "conditions": [
+          {
+            "id": "dev"
+          }
+        ],
+        "val": [
+          "dune",
+          "subst"
+        ]
+      },
+      [
+        "dune",
+        "build",
+        "-p",
+        {
+          "id": "name"
+        },
+        "-j",
+        {
+          "id": "jobs"
+        }
+      ],
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": [
+          "dune",
+          "runtest",
+          "-p",
+          {
+            "id": "name"
+          },
+          "-j",
+          {
+            "id": "jobs"
+          }
+        ]
+      }
+    ],
+    "depends": [
+      {
+        "conditions": [
+          {
+            "arg": "4.06.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ocaml"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "1.11",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "dune"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "2.4.3",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "lwt"
+      },
+      "duration",
+      {
+        "conditions": [
+          {
+            "arg": "4.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "mirage-runtime"
+      }
+    ],
+    "description": "\nThis package provides the MirageOS `OS` library for\nUnix targets, which handles the main loop and timers.\n",
+    "dev-repo": "git+https://github.com/mirage/mirage-unix.git",
+    "doc": "https://mirage.github.io/mirage-unix/doc",
+    "files-contents": {},
+    "homepage": "https://github.com/mirage/mirage-unix",
+    "isLocal": false,
+    "license": "ISC",
+    "maintainer": "anil@recoil.org",
+    "name": "mirage-unix",
+    "opam-version": "2.0",
+    "synopsis": "Unix core platform libraries for MirageOS",
+    "tags": "org:mirage",
+    "url": {
+      "section": {
+        "checksum": [
+          "sha256=535a0bce750305c24b715ca07d28b2979a912c3336edc9bf5ab8d3d2f48684f8",
+          "sha512=bd6dafe5276ebcd33bbdf37ff51b70d39989055d595184d4c8f34e6ebac3a843da3aac730ed0ef630522cdb2e43b89e008531db0a83adbe37c7c44606436c4ad"
+        ],
+        "src": "https://github.com/mirage/mirage-unix/releases/download/v5.0.1/mirage-unix-5.0.1.tbz"
+      }
+    },
+    "version": "5.0.1",
+    "x-commit-hash": "7118cd0767487f7ecd741fa2cd6c659e832ed973",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -14186,14 +15024,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=8bef7b726925a19857ad9b0be10c1914152f401e6792354678508389dcc0e27c",
-          "sha512=f825f04a2d2e228f12efa11443b8ab6ec2b961b173a29b042b1cce6267439f423b57bd83c6dbf7c0e3bee6460fced93b7146a62c7da0bd6e8a2bd008c81a70e1"
+          "sha256=626af6f65b5d0aad6ddb61a9629849c53fd47ee7048f9a6117b4c260f8ea46ce",
+          "sha512=725d1527336dd87a81446c99c98d898bbff11ac60e1f1e650a0b91dde370e4275ec8dd92c64f2788d4b84c30d7c9134ec8d654acdf161fbc5fd01de4f52f0e6a"
         ],
-        "src": "https://github.com/dune-universe/mtime/releases/download/v2.1.0%2Bdune/mtime-2.1.0.dune.tbz"
+        "src": "https://github.com/ju1m/mtime/archive/refs/tags/v2.2.0+dune.tar.gz"
       }
     },
-    "version": "2.1.0+dune",
-    "x-commit-hash": "3641c264980b2b4b97eec1bd123da12a1e9fb82c"
+    "version": "2.2.0+dune",
+    "x-commit-hash": "79d52c323bbbf8b1461fd95f0b2ad049c69abe27"
   },
   "multipart_form": {
     "authors": "Romain Calascibetta <romain.calascibetta@gmail.com>",
@@ -14255,7 +15093,7 @@
       {
         "conditions": [
           {
-            "arg": "2.3.0",
+            "arg": "2.0.0",
             "prefix_relop": "geq"
           }
         ],
@@ -14366,14 +15204,118 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=22a1869c326d13438aaedb7e6a1d42cbdcf1e306af125f5e5d78d94a1fccd891",
-          "sha512=4f90eaa4ca2734a38035008636e3b508770e891d418a23612845a110a1f1fee1216483bc4ee3a40dfe5cd7b19dae611d7c90df404d53cc5ee98e9b7a99222681"
+          "sha256=950740679be604e8641f557732ea988be506a7224fb1292853a904198bdc8560",
+          "sha512=5ad9590f2f9c8b97af00b253389ff087373b29627c384359650e5737883e9271e78405f6c009e36eda305f3dd64f6de5ac335d0c384016da6765abdc63161b20"
         ],
-        "src": "https://github.com/dinosaure/multipart_form/releases/download/v0.7.0/multipart_form-0.7.0.tbz"
+        "src": "https://github.com/dinosaure/multipart_form/releases/download/v0.8.0/multipart_form-0.8.0.tbz"
       }
     },
-    "version": "0.7.0",
-    "x-commit-hash": "9c2fc32383c83884b4489c22ecec9ef593360047"
+    "version": "0.8.0",
+    "x-commit-hash": "dad4a0f71c65021f52387498e407874cc931d6ed"
+  },
+  "num": {
+    "authors": [
+      "Valérie Ménissier-Morain",
+      "Pierre Weis",
+      "Xavier Leroy"
+    ],
+    "bug-reports": "https://github.com/ocaml/num/issues",
+    "build": [
+      [
+        {
+          "id": "make"
+        },
+        "PROFILE=release",
+        {
+          "conditions": [
+            {
+              "lhs": {
+                "arg": {
+                  "id": "ocaml:preinstalled"
+                },
+                "pfxop": "not"
+              },
+              "logop": "and",
+              "rhs": {
+                "lhs": {
+                  "id": "ocaml:version"
+                },
+                "relop": "lt",
+                "rhs": "5.0.0~~"
+              }
+            }
+          ],
+          "val": "opam-legacy"
+        },
+        {
+          "conditions": [
+            {
+              "lhs": {
+                "id": "ocaml:preinstalled"
+              },
+              "logop": "or",
+              "rhs": {
+                "lhs": {
+                  "id": "ocaml:version"
+                },
+                "relop": "geq",
+                "rhs": "5.0.0~~"
+              }
+            }
+          ],
+          "val": "opam-modern"
+        }
+      ],
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": [
+          {
+            "id": "make"
+          },
+          "test"
+        ]
+      }
+    ],
+    "conflicts": [
+      "base-num"
+    ],
+    "depends": [
+      {
+        "conditions": [
+          {
+            "arg": "4.06.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ocaml"
+      }
+    ],
+    "dev-repo": "git+https://github.com/ocaml/num.git",
+    "files-contents": {},
+    "homepage": "https://github.com/ocaml/num/",
+    "isLocal": false,
+    "license": "LGPL-2.1-only WITH OCaml-LGPL-linking-exception",
+    "maintainer": "Xavier Leroy <xavier.leroy@inria.fr>",
+    "name": "num",
+    "opam-version": "2.0",
+    "synopsis": "The legacy Num library for arbitrary-precision integer and rational arithmetic",
+    "url": {
+      "section": {
+        "checksum": [
+          "sha256=b5cce325449aac746d5ca963d84688a627cca5b38d41e636cf71c68b60495b3e",
+          "sha512=5cb32dfa9a9f0ad375bfd89079e9b1422979f3c089f61ef2300ad9cc64fb1fc25ed1f86b0267eb017f12ae41a574a959df5bfa39ab22c2be2f1ac84c3c671bdf"
+        ],
+        "src": "https://github.com/ocaml/num/archive/refs/tags/v1.6.tar.gz"
+      }
+    },
+    "version": "1.6",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
   },
   "ocaml": {
     "authors": [
@@ -14507,6 +15449,37 @@
           ],
           "val": "dkml-base-compiler"
         }
+      },
+      {
+        "group": [
+          {
+            "lhs": {
+              "conditions": [
+                {
+                  "lhs": {
+                    "id": "os"
+                  },
+                  "relop": "eq",
+                  "rhs": "win32"
+                }
+              ],
+              "val": "ocaml-env-mingw64"
+            },
+            "logop": "or",
+            "rhs": {
+              "conditions": [
+                {
+                  "lhs": {
+                    "id": "os"
+                  },
+                  "relop": "eq",
+                  "rhs": "win32"
+                }
+              ],
+              "val": "ocaml-env-mingw32"
+            }
+          }
+        ]
       }
     ],
     "description": "\nThis package requires a matching implementation of OCaml,\nand polls it to initialise specific variables like `ocaml:native-dynlink`",
@@ -14517,7 +15490,7 @@
     "homepage": "https://ocaml.org",
     "isLocal": false,
     "license": "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception",
-    "maintainer": "David Allsopp <david@tarides.com>",
+    "maintainer": "David Allsopp <dra27@dra27.uk>",
     "name": "ocaml",
     "opam-version": "2.0",
     "setenv": [
@@ -14629,7 +15602,8 @@
         },
         "target"
       ]
-    ]
+    ],
+    "x-revision": "4"
   },
   "ocaml-base-compiler": {
     "authors": "Xavier Leroy and many contributors",
@@ -14759,7 +15733,10 @@
       ]
     ],
     "conflict-class": "ocaml-core-compiler",
-    "conflicts": "system-msvc",
+    "conflicts": [
+      "relocatable",
+      "system-msvc"
+    ],
     "depends": [
       {
         "conditions": [
@@ -14824,50 +15801,29 @@
                 "group": [
                   {
                     "lhs": {
-                      "lhs": {
-                        "conditions": [
-                          {
-                            "lhs": {
-                              "lhs": {
-                                "id": "os"
-                              },
-                              "relop": "eq",
-                              "rhs": "win32"
-                            },
-                            "logop": "and",
-                            "rhs": {
-                              "lhs": {
-                                "id": "arch"
-                              },
-                              "relop": "eq",
-                              "rhs": "x86_64"
-                            }
-                          }
-                        ],
-                        "val": "arch-x86_64"
-                      },
-                      "logop": "and",
-                      "rhs": "system-mingw"
-                    },
-                    "logop": "and",
-                    "rhs": {
                       "conditions": [
                         {
                           "lhs": {
                             "lhs": {
-                              "id": "os-distribution"
+                              "id": "os"
                             },
                             "relop": "eq",
-                            "rhs": "cygwin"
+                            "rhs": "win32"
                           },
                           "logop": "and",
                           "rhs": {
-                            "id": "build"
+                            "lhs": {
+                              "id": "arch"
+                            },
+                            "relop": "eq",
+                            "rhs": "x86_64"
                           }
                         }
                       ],
-                      "val": "mingw-w64-shims"
-                    }
+                      "val": "arch-x86_64"
+                    },
+                    "logop": "and",
+                    "rhs": "system-mingw"
                   }
                 ]
               },
@@ -14877,43 +15833,22 @@
                   {
                     "lhs": {
                       "lhs": {
-                        "lhs": {
-                          "conditions": [
-                            {
-                              "lhs": {
-                                "id": "os"
-                              },
-                              "relop": "eq",
-                              "rhs": "win32"
-                            }
-                          ],
-                          "val": "arch-x86_32"
-                        },
-                        "logop": "and",
-                        "rhs": "ocaml-option-bytecode-only"
-                      },
-                      "logop": "and",
-                      "rhs": "system-mingw"
-                    },
-                    "logop": "and",
-                    "rhs": {
-                      "conditions": [
-                        {
-                          "lhs": {
+                        "conditions": [
+                          {
                             "lhs": {
-                              "id": "os-distribution"
+                              "id": "os"
                             },
                             "relop": "eq",
-                            "rhs": "cygwin"
-                          },
-                          "logop": "and",
-                          "rhs": {
-                            "id": "build"
+                            "rhs": "win32"
                           }
-                        }
-                      ],
-                      "val": "mingw-w64-shims"
-                    }
+                        ],
+                        "val": "arch-x86_32"
+                      },
+                      "logop": "and",
+                      "rhs": "ocaml-option-bytecode-only"
+                    },
+                    "logop": "and",
+                    "rhs": "system-mingw"
                   }
                 ]
               }
@@ -15046,7 +15981,7 @@
     "isLocal": false,
     "license": "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception",
     "maintainer": [
-      "David Allsopp <david@tarides.com>",
+      "David Allsopp <dra27@dra27.uk>",
       "Florian Angeletti <florian.angeletti@inria.fr>"
     ],
     "name": "ocaml-base-compiler",
@@ -15101,7 +16036,8 @@
         },
         "target"
       ]
-    ]
+    ],
+    "x-revision": "5"
   },
   "ocaml-compiler-libs": {
     "authors": [
@@ -15850,42 +16786,52 @@
         ]
       }
     ],
+    "conflicts": [
+      "relocatable"
+    ],
     "depends": [
       {
         "conditions": [
           {
             "lhs": {
-              "arg": "3.08.0",
-              "prefix_relop": "geq"
+              "lhs": {
+                "arg": "3.08.0",
+                "prefix_relop": "geq"
+              },
+              "logop": "and",
+              "rhs": {
+                "group": [
+                  {
+                    "lhs": {
+                      "lhs": {
+                        "lhs": {
+                          "id": "os"
+                        },
+                        "relop": "neq",
+                        "rhs": "cygwin"
+                      },
+                      "logop": "and",
+                      "rhs": {
+                        "lhs": {
+                          "id": "os-distribution"
+                        },
+                        "relop": "neq",
+                        "rhs": "msys2"
+                      }
+                    },
+                    "logop": "or",
+                    "rhs": {
+                      "arg": "5.0",
+                      "prefix_relop": "lt"
+                    }
+                  }
+                ]
+              }
             },
             "logop": "and",
             "rhs": {
-              "group": [
-                {
-                  "lhs": {
-                    "lhs": {
-                      "lhs": {
-                        "id": "os"
-                      },
-                      "relop": "neq",
-                      "rhs": "cygwin"
-                    },
-                    "logop": "and",
-                    "rhs": {
-                      "lhs": {
-                        "id": "os-distribution"
-                      },
-                      "relop": "neq",
-                      "rhs": "msys2"
-                    }
-                  },
-                  "logop": "or",
-                  "rhs": {
-                    "arg": "5.0",
-                    "prefix_relop": "lt"
-                  }
-                }
-              ]
+              "arg": "5.5.0~",
+              "prefix_relop": "lt"
             }
           }
         ],
@@ -16571,6 +17517,217 @@
       "(latest)"
     ]
   },
+  "parsexp": {
+    "authors": [
+      "Jane Street Group, LLC"
+    ],
+    "available": {
+      "lhs": {
+        "id": "arch"
+      },
+      "relop": "neq",
+      "rhs": "x86_32"
+    },
+    "bug-reports": "https://github.com/janestreet/parsexp/issues",
+    "build": [
+      [
+        "dune",
+        "build",
+        "-p",
+        {
+          "id": "name"
+        },
+        "-j",
+        {
+          "id": "jobs"
+        }
+      ]
+    ],
+    "depends": [
+      {
+        "conditions": [
+          {
+            "arg": "5.1.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ocaml"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "v0.17",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "arg": "v0.18~",
+              "prefix_relop": "lt"
+            }
+          }
+        ],
+        "val": "sexplib0"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "3.11.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "dune"
+      }
+    ],
+    "description": "\nThis library provides generic parsers for parsing S-expressions from\nstrings or other medium.\n\nThe library is focused on performances but still provide full generic\nparsers that can be used with strings, bigstrings, lexing buffers,\ncharacter streams or any other sources effortlessly.\n\nIt provides three different class of parsers:\n- the normal parsers, producing [Sexp.t] or [Sexp.t list] values\n- the parsers with positions, building compact position sequences so\n  that one can recover original positions in order to report properly\n  located errors at little cost\n- the Concrete Syntax Tree parsers, produce values of type\n  [Parsexp.Cst.t] which record the concrete layout of the s-expression\n  syntax, including comments\n\nThis library is portable and doesn't provide IO functions. To read\ns-expressions from files or other external sources, you should use\nparsexp_io.\n",
+    "dev-repo": "git+https://github.com/janestreet/parsexp.git",
+    "doc": "https://ocaml.janestreet.com/ocaml-core/latest/doc/parsexp/index.html",
+    "files-contents": {},
+    "homepage": "https://github.com/janestreet/parsexp",
+    "isLocal": false,
+    "license": "MIT",
+    "maintainer": "Jane Street developers",
+    "name": "parsexp",
+    "opam-version": "2.0",
+    "synopsis": "S-expression parsing library",
+    "url": {
+      "section": {
+        "checksum": "sha256=a3d10edbc4f98d16357b644d550fd1c06f4d9aa4990ab8ee6da01276c24d55b5",
+        "src": "https://github.com/janestreet/parsexp/archive/refs/tags/v0.17.0.tar.gz"
+      }
+    },
+    "version": "v0.17.0",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
+  },
+  "pcap-format": {
+    "authors": [
+      "Anil Madhavapeddy",
+      "Dave Scott",
+      "Richard Mortier"
+    ],
+    "bug-reports": "https://github.com/mirage/ocaml-pcap/issues",
+    "build": [
+      {
+        "conditions": [
+          {
+            "id": "dev"
+          }
+        ],
+        "val": [
+          "dune",
+          "subst"
+        ]
+      },
+      [
+        "dune",
+        "build",
+        "-p",
+        {
+          "id": "name"
+        },
+        "-j",
+        {
+          "id": "jobs"
+        }
+      ],
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": [
+          "dune",
+          "runtest",
+          "-p",
+          {
+            "id": "name"
+          },
+          "-j",
+          {
+            "id": "jobs"
+          }
+        ]
+      }
+    ],
+    "depends": [
+      {
+        "conditions": [
+          {
+            "arg": "4.08.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ocaml"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "1.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "dune"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "1.9.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "cstruct"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "0",
+            "prefix_relop": "gt"
+          }
+        ],
+        "val": "ppx_cstruct"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "ounit"
+      }
+    ],
+    "description": "\npcap-format provides an interface to encode and decode pcap files, dealing with\nboth endianess, including endianess detection.\n",
+    "dev-repo": "git+https://github.com/mirage/ocaml-pcap.git",
+    "doc": "https://mirage.github.io/ocaml-pcap/",
+    "files-contents": {},
+    "homepage": "https://github.com/mirage/ocaml-pcap",
+    "isLocal": false,
+    "license": "ISC",
+    "maintainer": "Dave Scott <dave@recoil.org>",
+    "name": "pcap-format",
+    "opam-version": "2.0",
+    "synopsis": "Decode and encode PCAP (packet capture) files",
+    "tags": [
+      "org:mirage",
+      "org:xapi-project"
+    ],
+    "url": {
+      "section": {
+        "checksum": [
+          "sha256=2d48f2f179ba56c9ccab51472b398983bba8ae44efedc393b282f09ad34791a6",
+          "sha512=6c46b314b665eff3e46550e28a88f6de5370ed5299e88fa76f612330fa704bea5e436608e4f0eff489b444cc8b534e1f5710a0d92083469ec52f375d6435baf8"
+        ],
+        "src": "https://github.com/mirage/ocaml-pcap/releases/download/v0.6.0/pcap-format-0.6.0.tbz"
+      }
+    },
+    "version": "0.6.0",
+    "x-commit-hash": "bcb22e4ae0ad88b72a182819961534548e82df86",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
+  },
   "pecu": {
     "authors": "Romain Calascibetta <romain.calascibetta@gmail.com>",
     "bug-reports": "https://github.com/mirage/pecu/issues",
@@ -16688,6 +17845,222 @@
     },
     "version": "0.7",
     "x-commit-hash": "f41b3c74d0c375be3057de33e409c99bffaab273"
+  },
+  "ppx_cstruct": {
+    "authors": [
+      "Anil Madhavapeddy",
+      "Richard Mortier",
+      "Thomas Gazagnaire",
+      "Pierre Chambart",
+      "David Kaloper",
+      "Jeremy Yallop",
+      "David Scott",
+      "Mindy Preston",
+      "Thomas Leonard",
+      "Etienne Millon"
+    ],
+    "bug-reports": "https://github.com/mirage/ocaml-cstruct/issues",
+    "build": [
+      {
+        "conditions": [
+          {
+            "id": "dev"
+          }
+        ],
+        "val": [
+          "dune",
+          "subst"
+        ]
+      },
+      [
+        "dune",
+        "build",
+        "-p",
+        {
+          "id": "name"
+        },
+        "-j",
+        {
+          "id": "jobs"
+        }
+      ],
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": [
+          "dune",
+          "runtest",
+          "-p",
+          {
+            "id": "name"
+          },
+          "-j",
+          {
+            "id": "jobs"
+          }
+        ]
+      }
+    ],
+    "depends": [
+      {
+        "conditions": [
+          {
+            "arg": "4.08.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ocaml"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "2.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "dune"
+      },
+      {
+        "conditions": [
+          {
+            "arg": {
+              "id": "version"
+            },
+            "prefix_relop": "eq"
+          }
+        ],
+        "val": "cstruct"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "ounit"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "0.16.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ppxlib"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "ppx_sexp_conv"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "v0.9.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "sexplib"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "cstruct-sexp"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "cppo"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "id": "with-test"
+            },
+            "logop": "and",
+            "rhs": {
+              "arg": {
+                "id": "version"
+              },
+              "prefix_relop": "eq"
+            }
+          }
+        ],
+        "val": "cstruct-unix"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "2.1.0",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "id": "with-test"
+            }
+          }
+        ],
+        "val": "ocaml-migrate-parsetree"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "2.0.2",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "id": "with-test"
+            }
+          }
+        ],
+        "val": "lwt_ppx"
+      }
+    ],
+    "description": "\nCstruct is a library and syntax extension to make it easier to access C-like\nstructures directly from OCaml.  It supports both reading and writing to these\nstructures, and they are accessed via the `Bigarray` module.",
+    "dev-repo": "git+https://github.com/mirage/ocaml-cstruct.git",
+    "doc": "https://mirage.github.io/ocaml-cstruct/",
+    "files-contents": {},
+    "homepage": "https://github.com/mirage/ocaml-cstruct",
+    "isLocal": false,
+    "license": "ISC",
+    "maintainer": "anil@recoil.org",
+    "name": "ppx_cstruct",
+    "opam-version": "2.0",
+    "synopsis": "Access C-like structures directly from OCaml",
+    "tags": [
+      "org:mirage",
+      "org:ocamllabs"
+    ],
+    "url": {
+      "section": {
+        "checksum": [
+          "sha256=9a78073392580e8349148fa3ab4b1b2e989dc9d30d07401b04c96b7c60f03e62",
+          "sha512=8d33fe6b3707a3994d0225cd33cadde0bb2ca834ef01096e3df33a08e4a8c6d02ebccddf558a73988b8a5595b65fdc10de61efbf872c6c9e55c719c7e19c463d"
+        ],
+        "src": "https://github.com/mirage/ocaml-cstruct/releases/download/v6.2.0/cstruct-6.2.0.tbz"
+      }
+    },
+    "version": "6.2.0",
+    "x-commit-hash": "8c7c94a038aae72dc89c994551c9d2c690895607",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
   },
   "ppx_derivers": {
     "authors": [
@@ -16828,7 +18201,7 @@
             },
             "logop": "and",
             "rhs": {
-              "arg": "5.4.0",
+              "arg": "5.6.0",
               "prefix_relop": "lt"
             }
           }
@@ -16924,7 +18297,7 @@
             },
             "logop": "and",
             "rhs": {
-              "arg": "0.26.2",
+              "arg": "0.28.1",
               "prefix_relop": "eq"
             }
           }
@@ -16956,14 +18329,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=d9d959fc9f84260487e45684dc741898a92fc5506b61a7f5cac65d21832db925",
-          "sha512=e428b1e3b89261c7efdaa18016264d1afbf067cb9b0d41124b04796c2487ac7ca8ee9a24a60d56f20d1774cb44aaa9ecf1512f17455812ba8d62d4ef93616ee7"
+          "sha256=89e049b3102f6670a213d34d802ea3ab0fc530a8959d2f1a1e8db830063429a3",
+          "sha512=2fbbf124fc61e1f22242d13505e9af39d4a3c7cf03def1c33ee8bd915195be9b817636667302e9c6ceddc74a9a4a54926340e21c96fd770a2bc6752400315cfd"
         ],
-        "src": "https://github.com/ocaml-ppx/ppxlib/releases/download/0.35.0/ppxlib-0.35.0.tbz"
+        "src": "https://github.com/ocaml-ppx/ppxlib/releases/download/0.38.0/ppxlib-0.38.0.tbz"
       }
     },
-    "version": "0.35.0",
-    "x-commit-hash": "3a791083c612e91fa4e6a9660ef69776ea750324",
+    "version": "0.38.0",
+    "x-commit-hash": "f7ffcd60a04f22ba85caefbde7f1eb4af6dba4ea",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -17080,14 +18453,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=39f461d4dbc0d605486c9077dba3ca0a3307a8fba69f56c128eb3efebb5c35d5",
-          "sha512=5b3330915bbaba6e858cffcb889f5d3b22d6ccf35511ca504aa4ea15c58cff2ca1e564995b27c8274e5832de0aa750e1f25fe3cbac082061045cbbcd2f9ef2f6"
+          "sha256=dac159996f07a924c5f5441953a95cc62a4b5f5eedc49c31659211aff093d462",
+          "sha512=aa6b77d5d307a70936471ba0cd55b1c9081d30cf6cab98a609f3a24ac4acc8df752aa0f4e64a08a3dae73bc7590b1c62e98e8dd7e418d8b3702447bc28beca52"
         ],
-        "src": "https://github.com/dinosaure/prettym/releases/download/0.0.4/prettym-0.0.4.tbz"
+        "src": "https://github.com/dinosaure/prettym/releases/download/0.0.5/prettym-0.0.5.tbz"
       }
     },
-    "version": "0.0.4",
-    "x-commit-hash": "bb5c82804a79a585c3e797288a34ef81b6025b4d",
+    "version": "0.0.5",
+    "x-commit-hash": "1a230266bb6096aa39300319265628a15e03dd03",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -17676,6 +19049,104 @@
     },
     "version": "base+dune"
   },
+  "sexplib": {
+    "authors": [
+      "Jane Street Group, LLC"
+    ],
+    "available": {
+      "lhs": {
+        "id": "arch"
+      },
+      "relop": "neq",
+      "rhs": "x86_32"
+    },
+    "bug-reports": "https://github.com/janestreet/sexplib/issues",
+    "build": [
+      [
+        "dune",
+        "build",
+        "-p",
+        {
+          "id": "name"
+        },
+        "-j",
+        {
+          "id": "jobs"
+        }
+      ]
+    ],
+    "depends": [
+      {
+        "conditions": [
+          {
+            "arg": "5.1.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ocaml"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "v0.17",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "arg": "v0.18~",
+              "prefix_relop": "lt"
+            }
+          }
+        ],
+        "val": "parsexp"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "v0.17",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "arg": "v0.18~",
+              "prefix_relop": "lt"
+            }
+          }
+        ],
+        "val": "sexplib0"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "3.11.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "dune"
+      },
+      "num"
+    ],
+    "description": "\nPart of Jane Street's Core library\nThe Core suite of libraries is an industrial strength alternative to\nOCaml's standard library that was developed by Jane Street, the\nlargest industrial user of OCaml.\n",
+    "dev-repo": "git+https://github.com/janestreet/sexplib.git",
+    "doc": "https://ocaml.janestreet.com/ocaml-core/latest/doc/sexplib/index.html",
+    "files-contents": {},
+    "homepage": "https://github.com/janestreet/sexplib",
+    "isLocal": false,
+    "license": "MIT",
+    "maintainer": "Jane Street developers",
+    "name": "sexplib",
+    "opam-version": "2.0",
+    "synopsis": "Library for serializing OCaml values to and from S-expressions",
+    "url": {
+      "section": {
+        "checksum": "sha256=da863b42b81235fdcf45eb32c04fb8bde22ff446a779cfb6f989730a35103160",
+        "src": "https://github.com/janestreet/sexplib/archive/refs/tags/v0.17.0.tar.gz"
+      }
+    },
+    "version": "v0.17.0"
+  },
   "sexplib0": {
     "authors": [
       "Jane Street Group, LLC"
@@ -18225,11 +19696,11 @@
     "synopsis": "Solo5 sandboxed execution environment",
     "url": {
       "section": {
-        "checksum": "sha512=fadc0f0920b3c77f828f5396db267755a9b45fb19b44970f2363224a91a11ba8593fe27caf3c14c321a52f993a6d21ec200f0eb950dd7bb0f5bbe5f7102aba5f",
-        "src": "https://github.com/Solo5/solo5/releases/download/v0.10.0/solo5-v0.10.0.tar.gz"
+        "checksum": "sha512=a364446b8cf39d63e0afe79475419cc81ec56f239cb38eef6c351fc849e836982f4d875b34f368bdfd1c7df72e8b162f95cf5e6d00e95077f9a57f2594f441bf",
+        "src": "https://github.com/Solo5/solo5/releases/download/v0.10.1/solo5-v0.10.1.tar.gz"
       }
     },
-    "version": "0.10.0",
+    "version": "0.10.1",
     "x-ci-accept-failures": [
       "centos-7",
       "opensuse-15.6"
@@ -19006,14 +20477,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=d7159ba745f3da2e73844353f020fdbc767393882b47565f8b61b941c351c3d7",
-          "sha512=fc136c13bd4c8ff1e69250809c63495299d6e00a58252ed2dd76bd704f7b95f8baa45bde3c5f0f27152767f9986fa3ba183f28d68d336dbf25a25482bd8b44b7"
+          "sha256=d51940587bce9475c977c596904c8179dcd784d9ef6dd9afe3e634cca940c9f3",
+          "sha512=9d9e9ebc9bd4aa7a87bd438c5fbf38e3529cbd916c2995a25473a1f6d8443ae1ab99b89ba9d074272e00631aafa47bfcf4e23466fa28f1f10bb83167402b7268"
         ],
-        "src": "https://github.com/mirleft/ocaml-tls/releases/download/v2.0.3/tls-2.0.3.tbz"
+        "src": "https://github.com/mirleft/ocaml-tls/releases/download/v2.1.2/tls-2.1.2.tbz"
       }
     },
-    "version": "2.0.3",
-    "x-commit-hash": "ba8ce3191bab369c698bd9dc4540873ee3a35c3e",
+    "version": "2.1.2",
+    "x-commit-hash": "48a32204baed3d7664198097b8039a1ab4feeee6",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -19191,14 +20662,176 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=d7159ba745f3da2e73844353f020fdbc767393882b47565f8b61b941c351c3d7",
-          "sha512=fc136c13bd4c8ff1e69250809c63495299d6e00a58252ed2dd76bd704f7b95f8baa45bde3c5f0f27152767f9986fa3ba183f28d68d336dbf25a25482bd8b44b7"
+          "sha256=d51940587bce9475c977c596904c8179dcd784d9ef6dd9afe3e634cca940c9f3",
+          "sha512=9d9e9ebc9bd4aa7a87bd438c5fbf38e3529cbd916c2995a25473a1f6d8443ae1ab99b89ba9d074272e00631aafa47bfcf4e23466fa28f1f10bb83167402b7268"
         ],
-        "src": "https://github.com/mirleft/ocaml-tls/releases/download/v2.0.3/tls-2.0.3.tbz"
+        "src": "https://github.com/mirleft/ocaml-tls/releases/download/v2.1.2/tls-2.1.2.tbz"
       }
     },
-    "version": "2.0.3",
-    "x-commit-hash": "ba8ce3191bab369c698bd9dc4540873ee3a35c3e",
+    "version": "2.1.2",
+    "x-commit-hash": "48a32204baed3d7664198097b8039a1ab4feeee6",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
+  },
+  "tuntap": {
+    "authors": [
+      "Vincent Bernardoff <vb@luminar.eu.org>",
+      "Anil Madhavapeddy <anil@recoil.org>"
+    ],
+    "bug-reports": "https://github.com/mirage/ocaml-tuntap/issues",
+    "build": [
+      {
+        "conditions": [
+          {
+            "id": "dev"
+          }
+        ],
+        "val": [
+          "dune",
+          "subst"
+        ]
+      },
+      [
+        "dune",
+        "build",
+        "-p",
+        {
+          "id": "name"
+        },
+        "-j",
+        {
+          "id": "jobs"
+        }
+      ],
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": [
+          "dune",
+          "runtest",
+          "-p",
+          {
+            "id": "name"
+          },
+          "-j",
+          {
+            "id": "jobs"
+          }
+        ]
+      }
+    ],
+    "depends": [
+      {
+        "conditions": [
+          {
+            "arg": "4.06.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ocaml"
+      },
+      "dune",
+      {
+        "conditions": [
+          {
+            "arg": "5.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ipaddr"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "4.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "macaddr"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "ounit2"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "id": "with-test"
+            },
+            "logop": "and",
+            "rhs": {
+              "arg": "5.0.0",
+              "prefix_relop": "geq"
+            }
+          }
+        ],
+        "val": "lwt"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "id": "with-test"
+            },
+            "logop": "and",
+            "rhs": {
+              "arg": "1.1.0",
+              "prefix_relop": "geq"
+            }
+          }
+        ],
+        "val": "cmdliner"
+      }
+    ],
+    "depexts": {
+      "conditions": [
+        {
+          "lhs": {
+            "id": "os-distribution"
+          },
+          "relop": "eq",
+          "rhs": "alpine"
+        }
+      ],
+      "val": [
+        "linux-headers"
+      ]
+    },
+    "description": "\nThis is an OCaml library for handling TUN/TAP devices.  TUN refers to layer 3\nvirtual interfaces whereas TAP refers to layer 2 Ethernet ones.\n\nSee <http://en.wikipedia.org/wiki/TUN/TAP> for more information.\n\nLinux, FreeBSD, OpenBSD, DragonFly and macOS should all be supported.  You will\nneed to install the third-party <http://tuntaposx.sourceforge.net/> on macOS\nbefore using this library.\n",
+    "dev-repo": "git+https://github.com/mirage/ocaml-tuntap.git",
+    "doc": "https://mirage.github.io/ocaml-tuntap/",
+    "files-contents": {},
+    "homepage": "https://github.com/mirage/ocaml-tuntap",
+    "isLocal": false,
+    "license": "ISC",
+    "maintainer": "vb@luminar.eu.org",
+    "name": "tuntap",
+    "opam-version": "2.0",
+    "synopsis": "OCaml library for handling TUN/TAP devices",
+    "tags": [
+      "org:mirage",
+      "org:xapi-project"
+    ],
+    "url": {
+      "section": {
+        "checksum": [
+          "sha256=0dfced58f90d85d4885ff4da95d0a8361000fc0670403a827519833b238e46ed",
+          "sha512=36356c310ac3aef9dfc05e6bc225d3a6691a88c758a304ab34cc06fcf650e9748c3d077851b62ef78f867bcade0b0192429105b0499db721a6b4680be2df4ee7"
+        ],
+        "src": "https://github.com/mirage/ocaml-tuntap/releases/download/v2.0.2/tuntap-2.0.2.tbz"
+      }
+    },
+    "version": "2.0.2",
+    "x-commit-hash": "d23d66fe7b07c11235561f38930af1d7c2fc1d94",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -19666,6 +21299,393 @@
       "(latest)"
     ]
   },
+  "utcp": {
+    "authors": "Robur <team@robur.coop>",
+    "available": {
+      "lhs": {
+        "lhs": {
+          "id": "arch"
+        },
+        "relop": "neq",
+        "rhs": "arm32"
+      },
+      "logop": "and",
+      "rhs": {
+        "lhs": {
+          "id": "arch"
+        },
+        "relop": "neq",
+        "rhs": "x86_32"
+      }
+    },
+    "bug-reports": "https://github.com/robur-coop/utcp/issues",
+    "build": [
+      {
+        "conditions": [
+          {
+            "id": "dev"
+          }
+        ],
+        "val": [
+          "dune",
+          "subst"
+        ]
+      },
+      [
+        "dune",
+        "build",
+        "-p",
+        {
+          "id": "name"
+        },
+        "-j",
+        {
+          "id": "jobs"
+        }
+      ],
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": [
+          "dune",
+          "runtest",
+          "-p",
+          {
+            "id": "name"
+          },
+          "-j",
+          {
+            "id": "jobs"
+          }
+        ]
+      }
+    ],
+    "depends": [
+      {
+        "conditions": [
+          {
+            "arg": "4.13.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ocaml"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "2.7.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "dune"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "6.0.1",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "cstruct"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "0.2.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "duration"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "0.8.7",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "fmt"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "5.2.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ipaddr"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "5.2.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "ipaddr-cstruct"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "0.7.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "logs"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "0.2.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "randomconv"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "1.4.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "mtime"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "0.4.1",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "metrics"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "1.2.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "mirage-crypto-rng"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "3.5.1",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "base64"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "5.4.2",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "lwt"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "4.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "mirage-sleep"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "5.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "mirage-mtime"
+      },
+      {
+        "conditions": [
+          {
+            "arg": "9.0.0",
+            "prefix_relop": "geq"
+          }
+        ],
+        "val": "tcpip"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "1.5.0",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "id": "with-test"
+            }
+          }
+        ],
+        "val": "alcotest"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "0.2.1",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "id": "with-test"
+            }
+          }
+        ],
+        "val": "crowbar"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "ohex"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "bechamel"
+      },
+      {
+        "conditions": [
+          {
+            "id": "with-test"
+          }
+        ],
+        "val": "bechamel-js"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "1.1.0",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "id": "dev"
+            }
+          }
+        ],
+        "val": "cmdliner"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "2.8.0",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "id": "dev"
+            }
+          }
+        ],
+        "val": "mirage-net-unix"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "2.2.1",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "id": "dev"
+            }
+          }
+        ],
+        "val": "ethernet"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "4.0.0",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "id": "dev"
+            }
+          }
+        ],
+        "val": "arp"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "5.0.0",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "id": "dev"
+            }
+          }
+        ],
+        "val": "mirage-unix"
+      },
+      {
+        "conditions": [
+          {
+            "lhs": {
+              "arg": "0.6.0",
+              "prefix_relop": "geq"
+            },
+            "logop": "and",
+            "rhs": {
+              "id": "dev"
+            }
+          }
+        ],
+        "val": "pcap-format"
+      }
+    ],
+    "description": "µTCP is an implementation of the Transmission Control\nProtocol (RFC 793) in OCaml. TCP is widely used on the Internet today.\n\nThis implementation is based on the research project Network Semantics\n(https://www.cl.cam.ac.uk/~pes20/Netsem/) which developed a rigorous test\noracle specification and validation for TCP/IP and the Sockets API (also see\nthe JACM paper http://www.cl.cam.ac.uk/~pes20/Netsem/paper3.pdf) in HOL4. The\nimplementation does not adhere to the specification, since some features of TCP\nthat are rarely used are not implemented (such as the urgent flag and urgent\npointers).\n\nThe target of this opam package is the MirageOS (https://mirageos.org) unikernel\noperating system.",
+    "dev-repo": "git+https://git.robur.coop/robur/utcp.git",
+    "files-contents": {},
+    "homepage": "https://git.robur.coop/robur/utcp",
+    "isLocal": false,
+    "license": "ISC",
+    "maintainer": "Robur <team@robur.coop>",
+    "name": "utcp",
+    "opam-version": "2.0",
+    "synopsis": "An implementation of TCP (Transmission Control Protocol) in OCaml",
+    "url": {
+      "section": {
+        "checksum": [
+          "md5=2a845005adb61fa09a550e842f858397",
+          "sha512=5376bc16f7fc4994ad2761d450db31ad66880356ffd2ea163f0a51150d2d0910918b23939be16fabf36233f3a5c5934233607e0c8777a9d0a391290ef8a510f8"
+        ],
+        "src": "https://git.robur.coop/robur/utcp/releases/download/v0.0.7/utcp-0.0.7.tbz"
+      }
+    },
+    "version": "0.0.7",
+    "x-maintenance-intent": [
+      "(latest)"
+    ]
+  },
   "uutf": {
     "authors": [
       "The uutf programmers"
@@ -19956,14 +21976,14 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=fc816ae2c65e8b42fa60d90a507b2140495e28d095ad37b27e4c268ae3c00d6c",
-          "sha512=3ca30aa78366cbb0599cce69a7bbfeaf857cc885f1367f3cf62d4236a55b40172478b73bda70c38b658dcfe9e407326f8db0a260cb36b568e3063c6eb75e0bd7"
+          "sha256=b6b159dc56ba45c373027f20e60779b5ef8d6fb7854e8b428a8dd9afe140ca55",
+          "sha512=08843f5cbe592514d81b6eb44a6fad0a502d741cacf4087251781c21ac9e2a623b5d49cd50e058813cd73f6beac4dfa2aea3acc54ebd7f84ddb808d0f4536449"
         ],
-        "src": "https://github.com/mirleft/ocaml-x509/releases/download/v1.0.6/x509-1.0.6.tbz"
+        "src": "https://github.com/mirleft/ocaml-x509/releases/download/v1.1.1/x509-1.1.1.tbz"
       }
     },
-    "version": "1.0.6",
-    "x-commit-hash": "af4ab13517c5138161eb11492c7c7acb1b34fe1a",
+    "version": "1.1.1",
+    "x-commit-hash": "c239fc4cfeecb5915417d2addfc2abab508c8eec",
     "x-maintenance-intent": [
       "(latest)"
     ]
@@ -20155,12 +22175,12 @@
     "url": {
       "section": {
         "checksum": [
-          "sha256=6e6c5c9555753a4bd7fed4693648808a5cea399f4999be5d567bb2acbb6d2d9d",
-          "sha512=89a63a869304941d31b80793545c860820d253fbe1da52246c4549e0b3702d5859290866396ef8cb87316f527e585d91376e748c59874ebd99f819419dd55ced"
+          "sha256=915bd53ebb608729eb76b4e5bc0580090d8428fe919c9bf9a5dcd39f739b49f7",
+          "sha512=e7a6f27acfbedff9f3132de1306235143e266614793014c2e62a7dbb9e07673993bbb0a9375d3efb71228a2b7b7c12f4a6728b689b25df11cbcbc33d34422c76"
         ],
-        "src": "https://github.com/mirage/Zarith/releases/download/1.14%2Bdune%2Bmirage/zarith-1.14.dune.mirage.tbz"
+        "src": "https://github.com/mirage/Zarith/archive/refs/tags/1.14+dune+mirage1.tar.gz"
       }
     },
-    "version": "1.14+dune+mirage"
+    "version": "1.14+dune+mirage1"
   }
 }

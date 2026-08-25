@@ -1,3 +1,4 @@
+{ }: # Explanation: this is required by `nix-update`
 let
   flake-lock = builtins.fromJSON (builtins.readFile ./flake.lock);
   flake-compat-node = flake-lock.nodes.root.inputs.flake-compat;

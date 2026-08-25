@@ -169,9 +169,7 @@
       "inputs": {
         "flake-compat": "flake-compat_3",
         "flake-utils": "flake-utils",
-        "mirage-opam-overlays": [
-          "mirage-opam-overlays"
-        ],
+        "mirage-opam-overlays": "mirage-opam-overlays",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -203,15 +201,16 @@
     "opam-overlays": {
       "flake": false,
       "locked": {
-        "lastModified": 1785000866,
-        "narHash": "sha256-Do6VnAFQm+LTUfpQsHwnP0Efp2AOqhwPMjBU7vQFSDY=",
-        "owner": "dune-universe",
+        "lastModified": 1789052149,
+        "narHash": "sha256-8r7YkwhD/F0Pt+iDBr3Mx/Pa71wztaFZgHPTei3gZzE=",
+        "owner": "ju1m",
         "repo": "opam-overlays",
-        "rev": "d3aca134ac032e7522e95a18f1ef72c63f45459b",
+        "rev": "231e1e99e22841830f19d9a28822343c3f2af3ce",
         "type": "github"
       },
       "original": {
-        "owner": "dune-universe",
+        "owner": "ju1m",
+        "ref": "mirage-nix",
         "repo": "opam-overlays",
         "type": "github"
       }
@@ -258,7 +257,6 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "git-hooks": "git-hooks",
-        "mirage-opam-overlays": "mirage-opam-overlays",
         "nixpkgs": "nixpkgs",
         "opam-nix": "opam-nix",
         "opam-overlays": "opam-overlays",

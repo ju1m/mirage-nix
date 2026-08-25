@@ -54,6 +54,11 @@ rec {
           # Move Opam file to root so a recursive search for opam files isn't required.
           # Prefix it so it doesn't interfere with other packages.
           cp ${mirageDir}/mirage/${pname}-${target}.opam mirage-${pname}-${target}.opam
+          cat >>mirage-${pname}-${target}.opam <<EOF
+          pin-depends: [
+            ["bisect_ppx.dev" "git+https://github.com/aantron/bisect_ppx#2d8dffbbfc0c431a37319d4d9a143836c9ec542e"]
+          ]
+          EOF
           runHook postBuild
         '';
         installPhase = ''
@@ -172,7 +177,7 @@ rec {
           runHook postInstall
         '';
         passthru = {
-          materialize = lib.getExe (writeShellApplication {
+          materialize = writeShellApplication {
             name = "${pname}-materialize-${target}";
             runtimeInputs = [
               coreutils
@@ -185,15 +190,15 @@ rec {
                 -f. ${pname}.${target}.passthru.materializedDir)
               mkdir -p "$materializedDir/${target}/"
               packagesJson=$(nix --extra-experimental-features nix-command -L build \
-                --no-link --print-out-paths --allow-import-from-derivation --show-trace \
+                --no-link --print-out-paths --allow-import-from-derivation \
                 -f. ${pname}.${target}.passthru.packagesMaterialized)
               jq <"$packagesJson" >"$materializedDir/${target}/packages.json"
               monorepoJson=$(nix --extra-experimental-features nix-command -L build \
-                --no-link --print-out-paths --allow-import-from-derivation --show-trace \
+                --no-link --print-out-paths --allow-import-from-derivation \
                 -f. ${pname}.${target}.passthru.monorepoMaterialized)
               jq <"$monorepoJson" >"$materializedDir/${target}/monorepo.json"
             '';
-          });
+          };
           inherit
             materializedDir
             mirageConf
@@ -244,19 +249,20 @@ rec {
                   finalAttrs: _previousAttrs: {
                     # Let `update-source-version` find where to update `version` and `hash`.
                     pos = builtins.unsafeGetAttrPos "src" finalArgs;
+                    version = finalArgs.version;
                     passthru = {
                       inherit (finalArgs) src materializedDir targets;
-                      materializeTargets = lib.getExe (writeShellApplication {
+                      materializeTargets = writeShellApplication {
                         name = "${finalArgs.pname}-materializeTargets";
                         text = ''
                           materializedDir=$(nix --extra-experimental-features nix-command -L eval \
-                            -f. ${finalArgs.pname}.update.passthru.materializedDir)
+                            -f. ${finalArgs.pname}.${lib.head finalArgs.targets}.passthru.materializedDir)
                           rm -f "$materializedDir/*/*.json"
                         ''
-                        + lib.concatMapStringsSep "\n" (target: ''
-                          ${finalSet.${target}.passthru.materialize}
-                        '') finalArgs.targets;
-                      });
+                        + lib.concatMapStringsSep "\n" (
+                          target: lib.getExe finalSet.${target}.passthru.materialize
+                        ) finalArgs.targets;
+                      };
                     };
                   }
                 );

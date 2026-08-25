@@ -6,6 +6,7 @@
     memory = 128;
     mainInterface = "enp1s0";
     settings = {
+      name = "dnsvizor.mydomain.example";
       hostname = "dnsvizor.mydomain.example";
       ipv4 = "10.0.0.2/24";
       ipv4-gateway = "10.0.0.1";

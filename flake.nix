@@ -11,20 +11,20 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mirage-opam-overlays = {
-      url = "github:dune-universe/mirage-opam-overlays";
-      flake = false;
-    };
     nixpkgs.url = "flake:nixpkgs";
     opam-nix = {
       url = "github:tweag/opam-nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.opam-repository.follows = "opam-repository";
       inputs.opam-overlays.follows = "opam-overlays";
-      inputs.mirage-opam-overlays.follows = "mirage-opam-overlays";
     };
     opam-overlays = {
-      url = "github:dune-universe/opam-overlays";
+      # FixMe(maintenance): use dune-universe
+      # when bos-0.3.0 and mtime-2.2.0 have landed
+      #url = "github:dune-universe/opam-overlays";
+      # PR: https://github.com/dune-universe/mtime/pull/4
+      # PR: https://github.com/dune-universe/bos/pull/2
+      url = "github:ju1m/opam-overlays/?ref=mirage-nix";
       flake = false;
     };
     opam-repository = {
@@ -71,7 +71,7 @@
           # and `dnsvizor.${target}` aliases for `nix flake show`.
           {
             ${pkgName} =
-              pkgs.emptyDirectory
+              unikernelPkgs.${pkgName}.update
               // lib.genAttrs unikernelPkgs.${pkgName}.update.targets (
                 target: unikernelPkgs.${pkgName}.${target}
               );
@@ -96,12 +96,16 @@
         { pkgs, system, ... }:
         {
           default = pkgs.mkShell {
+            nativeBuildInputs = [
+              # HowTo(update): nix-update dnsvizor --flake --use-update-script --update-script-args "--argstr skip-prompt true"
+              pkgs.nix-update
+            ];
             inherit (inputs.self.checks.${system}.git-hooks) shellHook;
           };
         }
       );
       checks = foreachSystem (
-        { system, pkgs, ... }@args:
+        args:
         lib.concatMapAttrs (_name: file: import file args) {
           git-hooks = flake/checks/git-hooks.nix;
           dnsvizor = flake/checks/dnsvizor.nix;
