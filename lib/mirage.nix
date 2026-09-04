@@ -28,7 +28,7 @@ in
 
 rec {
   # Description: run `mirage configure` on source,
-  # with mirage, dune, and ocaml from `opam-nix`.
+  # to generate dune recipes to build the unikernel for given `target`.
   configure = lib.extendMkDerivation {
     constructDrv = stdenv.mkDerivation;
     inherit excludeDrvArgNames;
@@ -64,8 +64,8 @@ rec {
       };
   };
 
-  # Description: read opam files from mirage configuration
-  # and build a unikernel for the given target.
+  # Description: use dune files generated with `configure`
+  # to build a unikernel for the given target.
   build = lib.extendMkDerivation {
     constructDrv = stdenv.mkDerivation;
     inherit excludeDrvArgNames;
@@ -112,47 +112,47 @@ rec {
           (opam-nix.materializedDefsToScope {
             sourceMap.${mirageName} = finalAttrs.passthru.mirageConf;
           } (materializedDir + "/${target}/packages.json")).overrideScope
-            (
-              finalOpam: previousOpam: {
-                ${mirageName} = previousOpam.${mirageName}.overrideAttrs (
-                  lib.composeExtensions (finalUnikernel: previousUnikernel: {
-                    inherit version;
-                    __intentionallyOverridingVersion = true;
+            unikernelOverlay;
 
-                    env =
-                      previousUnikernel.env or { }
-                      // lib.optionalAttrs (finalOpam ? "ocaml-solo5") {
-                        OCAMLFIND_CONF = finalOpam.ocaml-solo5 + "/lib/findlib.conf";
-                      };
+        unikernelOverlay = finalOpam: previousOpam: {
+          ${mirageName} = previousOpam.${mirageName}.overrideAttrs (
+            lib.composeExtensions (finalUnikernel: previousUnikernel: {
+              inherit version;
+              __intentionallyOverridingVersion = true;
 
-                    buildPhase = ''
-                      runHook preBuild
-                      mkdir duniverse
-                      echo '(vendored_dirs *)' > duniverse/dune
-                      ${lib.concatStringsSep "\n" (
-                        lib.mapAttrsToList (name: path: ''
-                          cp -r ${path} duniverse/${lib.toLower name}
-                        '') finalAttrs.passthru.monorepo
-                      )}
-                      dune build ${mirageDir} --profile release
-                      runHook postBuild
-                    '';
+              env =
+                previousUnikernel.env or { }
+                // lib.optionalAttrs (finalOpam ? "ocaml-solo5") {
+                  OCAMLFIND_CONF = finalOpam.ocaml-solo5 + "/lib/findlib.conf";
+                };
 
-                    installPhase = ''
-                      runHook preInstall
-                      mkdir -p $out/share/mirageos/
-                      cp -L ${mirageDir}/dist/${pname}* $out/share/mirageos/
-                      runHook postInstall
-                    '';
+              buildPhase = ''
+                runHook preBuild
+                mkdir duniverse
+                echo '(vendored_dirs *)' > duniverse/dune
+                ${lib.concatStringsSep "\n" (
+                  lib.mapAttrsToList (name: path: ''
+                    cp -r ${path} duniverse/${lib.toLower name}
+                  '') finalAttrs.passthru.monorepo
+                )}
+                dune build ${mirageDir} --profile release
+                runHook postBuild
+              '';
 
-                    # Reduce the full closure size by several hundreds MiB
-                    # since if you're using an unikernel you probably care about this.
-                    doNixSupport = false;
-                    stripAllList = previousUnikernel.stripAllList or [ ] ++ [ "share/mirageos" ];
-                  }) overrideUnikernel
-                );
-              }
-            );
+              installPhase = ''
+                runHook preInstall
+                mkdir -p $out/share/mirageos/
+                cp -L ${mirageDir}/dist/${pname}* $out/share/mirageos/
+                runHook postInstall
+              '';
+
+              # Reduce the full closure size by several hundreds MiB
+              # since if you're using an unikernel you probably care about this.
+              doNixSupport = false;
+              stripAllList = previousUnikernel.stripAllList or [ ] ++ [ "share/mirageos" ];
+            }) overrideUnikernel
+          );
+        };
       in
       {
         pname = "${pname}-${target}";
