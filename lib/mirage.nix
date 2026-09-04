@@ -16,10 +16,11 @@ let
     "target"
     "targets"
     "materializedDir"
-    "monorepoQuery"
     "overrideUnikernel"
     "query"
     "queryArgs"
+    "monorepoQuery"
+    "monorepoQueryArgs"
     "opamPackages"
     "mirageDir"
   ];
@@ -75,11 +76,12 @@ rec {
         version,
         src,
         target,
-        monorepoQuery,
         materializedDir,
         mirageDir ? ".",
-        queryArgs ? { },
         query ? { },
+        queryArgs ? { },
+        monorepoQuery,
+        monorepoQueryArgs ? { },
         overrideUnikernel ? finalAttrs: previousAttrs: { },
         ...
       }@args:
@@ -89,7 +91,7 @@ rec {
           args
           // {
             inherit target;
-            opamPackages = opam-nix.queryToScope { } ({ mirage = "*"; } // query);
+            opamPackages = opam-nix.queryToScope queryArgs ({ mirage = "*"; } // query);
           }
         );
         mirageConf = configure (
@@ -99,9 +101,13 @@ rec {
             opamPackages = packages;
           }
         );
-        packagesMaterialized = opam-nix.materializeOpamProject { } mirageName mirageConfIFD query;
-        monorepoMaterialized = opam-nix.materializeBuildOpamMonorepo { } mirageConfIFD monorepoQuery;
-        monorepo = opam-nix.unmaterializeQueryToMonorepo { } (materializedDir + "/${target}/monorepo.json");
+        packagesMaterialized = opam-nix.materializeOpamProject queryArgs mirageName mirageConfIFD query;
+        monorepoMaterialized =
+          opam-nix.materializeBuildOpamMonorepo monorepoQueryArgs mirageConfIFD
+            monorepoQuery;
+        monorepo = opam-nix.unmaterializeQueryToMonorepo monorepoQueryArgs (
+          materializedDir + "/${target}/monorepo.json"
+        );
         packages =
           (opam-nix.materializedDefsToScope {
             sourceMap.${mirageName} = finalAttrs.passthru.mirageConf;
