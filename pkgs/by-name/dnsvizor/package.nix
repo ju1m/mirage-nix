@@ -1,6 +1,6 @@
 {
   lib,
-  fetchFromGitHub,
+  fetchFromForgejo,
   pkgsStatic,
   stdenv,
   overrideCC,
@@ -12,8 +12,9 @@
   pname = "dnsvizor";
   version = "0-unstable-2026-01-21";
   materializedDir = ./materialized;
-  src = fetchFromGitHub {
-    owner = "robur-coop";
+  src = fetchFromForgejo {
+    domain = "git.robur.coop";
+    owner = "robur";
     repo = "dnsvizor";
     rev = "0a209647142feeb653deb542cc0177621ab70483";
     hash = "sha256-GuQJzXO2w61nBa9KsnuExBGCEsPZ7lO9hcgPy0UqXRo=";
@@ -93,7 +94,7 @@
             updateScript = _experimental-update-script-combinators.sequence [
               # To update `src` only once before materializing all `targets`.
               (unstableGitUpdater { })
-              [ previousAttrs.passthru.materializeTargets ]
+              [ (lib.getExe previousAttrs.passthru.materializeTargets) ]
             ];
           };
         }
