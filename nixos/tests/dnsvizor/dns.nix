@@ -16,11 +16,11 @@
 
 # IPv6 is preferred/tested when dnsvizor enables both IPv4 and IPv6.
 {
+  testName,
   resolverKind,
   useNetworkd,
   useNftables,
-  modules,
-}@testArgs:
+}:
 
 assert builtins.elem resolverKind [
   "stub"
@@ -38,7 +38,15 @@ let
   # explicitly set vlan in two ways of network config (virtualisation.interfaces and virtualisation.vlans) to make sure all nodes are in the same vlan
   vlan = 1;
 
+  resolverModule =
+    {
+      stub = ./stub-dns-resolver.nix;
+      recursive = ./recursive-dns-resolver.nix;
+    }
+    .${resolverKind};
+
   commonDnsServerModule = {
+    imports = [ resolverModule ];
     services.dnsvizor.packetForwardingIsSecure = true;
     services.knot = {
       enable = true;
@@ -58,7 +66,7 @@ let
       ];
       allowedTCPPorts = [
         53
-        853 # openning it can speed up tests with opportunistic-tls-authoritative
+        853 # opening it can speed up tests with opportunistic-tls-authoritative
       ];
     };
   };
@@ -74,6 +82,7 @@ let
       cfg = config.services.dnsvizor;
     in
     {
+      imports = [ resolverModule ];
       services.dnsvizor.packetForwardingIsSecure = true;
       virtualisation.interfaces.${cfg.mainInterface} = {
         inherit vlan;
@@ -192,16 +201,16 @@ let
   quoteIpv6 = ipv6: "[${ipv6}]";
 in
 {
-  name = "DNSvizor";
+  name = testName;
 
   nodes = {
-    rootDnsServer =
+    rootdnsserver =
       { pkgs, nodes, ... }:
       let
         interface = "enp3s0";
       in
       {
-        imports = [ commonDnsServerModule ] ++ testArgs.modules;
+        imports = [ commonDnsServerModule ];
 
         virtualisation.interfaces.${interface} = {
           inherit vlan;
@@ -226,41 +235,41 @@ in
           a.root-servers.net A 198.41.0.4
           a.root-servers.net AAAA 2001:503:ba3e::2:30
           com NS a.tld-servers.com
-          a.tld-servers.com A ${getIpv4 nodes.tldDnsServer}
-          a.tld-servers.com AAAA ${getIpv6 nodes.tldDnsServer}
+          a.tld-servers.com A ${getIpv4 nodes.tlddnsserver}
+          a.tld-servers.com AAAA ${getIpv6 nodes.tlddnsserver}
         '';
       };
 
-    tldDnsServer =
+    tlddnsserver =
       { pkgs, nodes, ... }:
       {
-        imports = [ commonDnsServerModule ] ++ testArgs.modules;
+        imports = [ commonDnsServerModule ];
 
         virtualisation.vlans = [ vlan ];
 
         services.knot.settings.zone."com".file = pkgs.writeText "zone" ''
           @ SOA a.tld-servers.com. hostmaster.tld-servers.com. 1501732 900 1800 6048000 3600
           @ NS a.tld-servers
-          a.tld-servers A ${getIpv4 nodes.tldDnsServer}
-          a.tld-servers AAAA ${getIpv6 nodes.tldDnsServer}
+          a.tld-servers A ${getIpv4 nodes.tlddnsserver}
+          a.tld-servers AAAA ${getIpv6 nodes.tlddnsserver}
           example NS ns1.example
-          ns1.example A ${getIpv4 nodes.authoritativeDnsServer}
-          ns1.example AAAA ${getIpv6 nodes.authoritativeDnsServer}
+          ns1.example A ${getIpv4 nodes.authoritativednsserver}
+          ns1.example AAAA ${getIpv6 nodes.authoritativednsserver}
         '';
       };
 
-    authoritativeDnsServer =
+    authoritativednsserver =
       { pkgs, nodes, ... }:
       {
-        imports = [ commonDnsServerModule ] ++ testArgs.modules;
+        imports = [ commonDnsServerModule ];
 
         virtualisation.vlans = [ vlan ];
 
         services.knot.settings.zone."example.com".file = pkgs.writeText "zone" ''
           @ SOA ns1.example.com. hostmaster.example.com. 2019031301 86400 7200 3600000 172800
           @ NS ns1
-          ns1 A ${getIpv4 nodes.authoritativeDnsServer}
-          ns1 AAAA ${getIpv6 nodes.authoritativeDnsServer}
+          ns1 A ${getIpv4 nodes.authoritativednsserver}
+          ns1 AAAA ${getIpv6 nodes.authoritativednsserver}
           www A 192.168.4.1
           www AAAA 2001:db8::1
           block1.cli A 192.168.5.1
@@ -272,7 +281,7 @@ in
         '';
       };
 
-    dnsResolver =
+    dnsresolver =
       {
         lib,
         nodes,
@@ -283,22 +292,19 @@ in
         cfg = config.services.dnsvizor;
       in
       {
-        imports = [
-          commonDnsResolverModule
-        ]
-        ++ testArgs.modules;
+        imports = [ commonDnsResolverModule ];
 
         # emulate root dns resolver
         networking.interfaces.${cfg.mainInterface} = lib.mkIf (resolverKind == "recursive") {
           ipv4.routes = lib.forEach rootDnsServerRealIpv4s (address: {
             inherit address;
             prefixLength = 32;
-            via = getIpv4 nodes.rootDnsServer;
+            via = getIpv4 nodes.rootdnsserver;
           });
           ipv6.routes = lib.forEach rootDnsServerRealIpv6s (address: {
             inherit address;
             prefixLength = 128;
-            via = getIpv6 nodes.rootDnsServer;
+            via = getIpv6 nodes.rootdnsserver;
           });
         };
 
@@ -307,23 +313,23 @@ in
             let
               ip =
                 if cfg.ipv6Enabled then
-                  quoteIpv6 (getIpv6 nodes.authoritativeDnsServer)
+                  quoteIpv6 (getIpv6 nodes.authoritativednsserver)
                 else
-                  getIpv4 nodes.authoritativeDnsServer;
+                  getIpv4 nodes.authoritativednsserver;
             in
             # mkForce because already set in example
             lib.mkIf (resolverKind == "stub") (lib.mkForce "udp:${ip}");
         };
       };
 
-    dnsClient =
+    dnsclient =
       { pkgs, nodes, ... }:
       let
-        inherit (nodes) dnsResolver;
-        dnsResolverCfg = dnsResolver.services.dnsvizor;
+        inherit (nodes) dnsresolver;
+        dnsResolverCfg = dnsresolver.services.dnsvizor;
       in
       {
-        imports = testArgs.modules;
+        imports = [ resolverModule ];
 
         services.dnsvizor.packetForwardingIsSecure = true;
 
@@ -333,10 +339,10 @@ in
 
         networking.hosts = lib.optionalAttrs (dnsResolverCfg.settings.hostname != null) (
           {
-            ${getIpv4 dnsResolver} = [ dnsResolverCfg.settings.hostname ];
+            ${getIpv4 dnsresolver} = [ dnsResolverCfg.settings.hostname ];
           }
           // lib.optionalAttrs dnsResolverCfg.ipv6Enabled {
-            ${getIpv6 dnsResolver} = [ dnsResolverCfg.settings.hostname ];
+            ${getIpv6 dnsresolver} = [ dnsResolverCfg.settings.hostname ];
           }
         );
       };
@@ -345,12 +351,12 @@ in
   testScript =
     { nodes, ... }:
     let
-      inherit (nodes) dnsResolver;
-      dnsResolverCfg = dnsResolver.services.dnsvizor;
+      inherit (nodes) dnsresolver;
+      dnsResolverCfg = dnsresolver.services.dnsvizor;
       dnsResolverIpv4ForQuery =
-        if dnsResolverCfg.openFirewall then getIpv4 dnsResolver else dnsResolverCfg.ipv4Prefix;
+        if dnsResolverCfg.openFirewall then getIpv4 dnsresolver else dnsResolverCfg.ipv4Prefix;
       dnsResolverIpv6ForQuery =
-        if dnsResolverCfg.openFirewall then getIpv6 dnsResolver else dnsResolverCfg.ipv6Prefix;
+        if dnsResolverCfg.openFirewall then getIpv6 dnsresolver else dnsResolverCfg.ipv6Prefix;
       protocolPorts = [
         {
           protocol = "plain";
@@ -478,33 +484,33 @@ in
     in
     ''
       if "${resolverKind}" == "stub":
-          dns_servers = [ authoritativeDnsServer ];
+          dns_servers = [ authoritativednsserver ];
       else:
-          dns_servers = [ rootDnsServer, tldDnsServer, authoritativeDnsServer ]
-      dns_resolver = dnsResolver
-      dns_client = ${if dnsResolverCfg.openFirewall then "dnsClient" else "dnsResolver"}
+          dns_servers = [ rootdnsserver, tlddnsserver, authoritativednsserver ]
+      dnsresolver = dnsresolver
+      dnsclient = ${if dnsResolverCfg.openFirewall then "dnsclient" else "dnsresolver"}
 
-      dns_resolver.start()
+      dnsresolver.start()
       for dns_server in dns_servers:
           dns_server.start()
-      dns_client.start()
+      dnsclient.start()
 
       for dns_server in dns_servers:
           dns_server.wait_for_unit("multi-user.target")
-      dns_resolver.wait_for_unit("multi-user.target")
-      dns_client.wait_for_unit("multi-user.target")
+      dnsresolver.wait_for_unit("multi-user.target")
+      dnsclient.wait_for_unit("multi-user.target")
       for dns_server in dns_servers:
           dns_server.wait_for_unit("knot.service")
           dns_server.wait_until_succeeds('journalctl -u knot -g "zone file loaded"')
-      dns_resolver.wait_for_unit("dnsvizor.service")
-      dns_resolver.wait_until_succeeds('journalctl -u dnsvizor -g "${
+      dnsresolver.wait_for_unit("dnsvizor.service")
+      dnsresolver.wait_until_succeeds('journalctl -u dnsvizor -g "${
         if resolverKind == "stub" then "forwarding to" else "listening on"
       }"')
       # we assume the DNS block list is loaded after it is accessed on the web server
-      dns_resolver.wait_for_unit("caddy.service")
-      dns_resolver.wait_until_succeeds("journalctl -u caddy -g http.log.access")
+      dnsresolver.wait_for_unit("caddy.service")
+      dnsresolver.wait_until_succeeds("journalctl -u caddy -g http.log.access")
 
-      dns_client.log("I am the DNS client")
+      dnsclient.log("I am the DNS client")
 
       with subtest("Web interface can be accessed"):
           web_interface_url = "https://${webInterfaceDomainOrIp}"
@@ -512,10 +518,10 @@ in
               command = f"curl --insecure {web_interface_url}"
           else:
               self_signed_cert = "/tmp/self-signed-cert.pem"
-              dns_client.fail(f"curl --write-out %{{certs}} {web_interface_url} >{self_signed_cert}")
-              dns_client.succeed(f'grep "BEGIN CERTIFICATE" {self_signed_cert}')
+              dnsclient.fail(f"curl --write-out %{{certs}} {web_interface_url} >{self_signed_cert}")
+              dnsclient.succeed(f'grep "BEGIN CERTIFICATE" {self_signed_cert}')
               command = f"curl --cacert {self_signed_cert} {web_interface_url}"
-          html = dns_client.succeed(command)
+          html = dnsclient.succeed(command)
           assert "DNSvizor" in html, "fail to check web interface"
 
       def test_dns(dns_resolver_url, query, query_type, expected_answer):
@@ -530,7 +536,7 @@ in
               query,
           ])
           import json
-          output = json.loads(dns_client.wait_until_succeeds(query_command))
+          output = json.loads(dnsclient.wait_until_succeeds(query_command))
           actual_answer = output[0]['replies'][0]["answer"]
           def check_answer(expected_answer, actual_answer):
               if expected_answer is None:
@@ -552,7 +558,7 @@ in
 
       with subtest("Systemd hardening works, exposure level is low"):
           systemd_security_threshold = 49 # use a loose bound to make this test less flaky
-          output = dns_resolver.succeed(f"systemd-analyze security dnsvizor.service --threshold={systemd_security_threshold}")
-          dns_resolver.log(output)
+          output = dnsresolver.succeed(f"systemd-analyze security dnsvizor.service --threshold={systemd_security_threshold}")
+          dnsresolver.log(output)
     '';
 }
