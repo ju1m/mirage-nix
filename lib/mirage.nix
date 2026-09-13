@@ -22,6 +22,7 @@ let
     "monorepoQuery"
     "monorepoQueryArgs"
     "opamPackages"
+    "pinDepends"
     "mirageDir"
   ];
 in
@@ -39,6 +40,7 @@ rec {
         target,
         opamPackages,
         mirageDir ? finalAttrs.mirageDir or ".",
+        pinDepends ? { },
         ...
       }:
       {
@@ -56,7 +58,9 @@ rec {
           cp ${mirageDir}/mirage/${pname}-${target}.opam mirage-${pname}-${target}.opam
           cat >>mirage-${pname}-${target}.opam <<EOF
           pin-depends: [
-            ["bisect_ppx.dev" "git+https://github.com/aantron/bisect_ppx#2d8dffbbfc0c431a37319d4d9a143836c9ec542e"]
+            ${lib.concatMapStringsSep "\n" (pkg: ''[ "${pkg.name}" "${pkg.value}" ]'') (
+              lib.attrsToList pinDepends
+            )}
           ]
           EOF
           runHook postBuild

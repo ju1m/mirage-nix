@@ -76,6 +76,15 @@
       "1.0.3+dune"; # default version is not in the dune overlay yet
   };
 
+  # ToDo(maintenance): remove when a new version of `bisect_ppx`
+  # has been released.
+  # Issue: https://github.com/aantron/bisect_ppx/issues/444
+  # Issue: https://github.com/aantron/bisect_ppx/pull/448
+  pinDepends = {
+    "bisect_ppx.dev" =
+      "git+https://github.com/aantron/bisect_ppx#2d8dffbbfc0c431a37319d4d9a143836c9ec542e";
+  };
+
   # Explanation: remove broken targets instead of setting meta.broken
   # because it doesn't cover eval failure by IFD.
   # For more detailed support state, see: https://github.com/Solo5/solo5/blob/dabc69fd89b8119449ec4088c54b458d4ccc851b/docs/building.md?plain=1#L55
