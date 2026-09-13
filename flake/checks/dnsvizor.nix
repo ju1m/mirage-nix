@@ -6,7 +6,7 @@
 }:
 let
   mkNixOSTest =
-    testName: args:
+    testNamePrefix: args:
     let
       testArgToString =
         name: param: sep:
@@ -27,28 +27,30 @@ let
         ];
       mkTest =
         testArgs:
-        lib.nameValuePair "dnsvizor-${testName}${testArgsToString testArgs}" (
-          pkgs.testers.runNixOSTest (
-            lib.recursiveUpdate (import ./common.nix) (
-              lib.modules.importApply ../../nixos/tests/dnsvizor/dns.nix (
-                testArgs
-                // {
-                  modules = [
-                    args.module
-                    inputs.self.nixosModules.dnsvizor
-                  ];
-                }
-              )
-            )
-          )
+        let
+          testName = testArgsToString testArgs;
+        in
+        lib.nameValuePair "dnsvizor-${testNamePrefix}${testName}" (
+          pkgs.testers.runNixOSTest {
+            imports = [
+              ./common.nix
+              (lib.modules.importApply ../../nixos/tests/dnsvizor/dns.nix (
+                testArgs // { testName = "DNSVizor-${testName}"; }
+              ))
+            ];
+            extraBaseNodeModules = inputs.self.nixosModules.dnsvizor;
+          }
         );
     in
     lib.listToAttrs (lib.map mkTest (lib.cartesianProduct args.settings));
 in
 lib.concatMapAttrs mkNixOSTest {
-  dns-ipv4 = {
+  dns = {
     settings = {
-      resolverKind = [ "stub" ];
+      resolverKind = [
+        "stub"
+        "recursive"
+      ];
       useNetworkd = [
         true
         false
@@ -58,20 +60,5 @@ lib.concatMapAttrs mkNixOSTest {
         false
       ];
     };
-    module = ../../nixos/tests/dnsvizor/stub-dns-resolver.nix;
-  };
-  dns-dualstack = {
-    settings = {
-      resolverKind = [ "recursive" ];
-      useNetworkd = [
-        true
-        false
-      ];
-      useNftables = [
-        true
-        false
-      ];
-    };
-    module = ../../nixos/tests/dnsvizor/recursive-dns-resolver.nix;
   };
 }
